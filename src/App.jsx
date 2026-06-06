@@ -4,38 +4,23 @@ import AgeCounter from "./components/AgeCounter";
 import LoginForm from "./components/LoginForm";
 import LikeButton from "./components/LikeButton";
 import Navbar from "./components/Navbar";
-
+import Layout from "./components/Layout";
+import ResourceList from "./components/ResourceList";
 
 function App(){
 
     return(
-        <div>
-
-             <Navbar />
-            <h1>Student Resource Hub</h1>
-
-            {/* <ResourceCard 
-                title = "React Note"
-                subject = "Frontend"
-                category = "Not Study"
-                createdAt = "2026-29-05"
-                author = "Houzsaad"
-            /> */}
-
+        <Layout>
             <ResourceCard 
                 title = "React Note"
                 subject = "Frontend"
                 category = "Not Study"
                 createdAt = "2026-29-05"
                 author = "Houzsaad"
-            />
-
-            <ProfileCard />
-            <AgeCounter />
-            <LoginForm />
-            <LikeButton />
+            />     
+            <ResourceList />      
            
-        </div>
+        </Layout>
     )
 
 }

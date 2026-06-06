@@ -1,7 +1,7 @@
 function Navbar(){
     return(
         <nav>
-            <h1>Student Resource Hub</h1>
+            {/* <h1>Student Resource Hub</h1> */}
             <ul>
                 <li><a href="/">Home</a></li>
                 <li><a href="/resources">Browse</a></li>
