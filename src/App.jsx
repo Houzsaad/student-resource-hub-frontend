@@ -11,14 +11,8 @@ function App(){
 
     return(
         <Layout>
-            <ResourceCard 
-                title = "React Note"
-                subject = "Frontend"
-                category = "Not Study"
-                createdAt = "2026-29-05"
-                author = "Houzsaad"
-            />     
-            <ResourceList />      
+
+            <ResourceList />
            
         </Layout>
     )

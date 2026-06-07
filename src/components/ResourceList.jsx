@@ -33,12 +33,15 @@ function ResourceList (){
 
     if (loading) return <p>loading...</p>;
     if (error) return <p>Error: {error}</p>;
+    if (resources.length === 0) return <p>Resource Not Found</p>
 
     return(
         <div>
-            <input value={search}
-                onChange={e => setSearch(e.target.value)}
-                placeholder="search resources..." />
+            <input 
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                placeholder="search resources..."
+            />
             
             {resources.map(r => 
                 <ResourceCard key={r.id} title={r.title} {...r} />

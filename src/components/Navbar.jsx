@@ -1,14 +1,35 @@
-function Navbar(){
-    return(
+import "./Navbar.css"
+function Navbar({loading, search, error}){
+    const isLoggedIn = Boolean(localStorage.getItem("access_token"));
+
+    // if (loading) return <p className="status">Loading...</p>;
+    // if (error) return <p className="error">Error: {error}</p>
+
+    return (
         <nav>
-            {/* <h1>Student Resource Hub</h1> */}
-            <ul>
-                <li><a href="/">Home</a></li>
-                <li><a href="/resources">Browse</a></li>
-                <li><a href="/login">Login</a></li>
-                <li><a href="/register">Register</a></li>
-            </ul>
+            {isLoggedIn ? (
+                <>
+                    <a href="/home">Home</a>
+                    <a href="/browse">Browse</a>
+                    <a href="/upload">Upload</a>
+                    <a href="profile">Profile</a>
+                    
+                    <button onClick={() => {
+                        localStorage.removeItem("access_token");
+                        window.location.href = "/login"
+                    }}>Logout</button>
+                </>
+                ):(
+                    <>
+                        <a href="/home">Home</a>
+                        <a href="/browse">Browse</a>
+                        <a href="/login">Login</a>
+                        <a href="/register">Register</a>
+                    </>
+                )}
+            
         </nav>
     );
 }
+
 export default Navbar;
