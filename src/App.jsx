@@ -6,6 +6,7 @@ import LikeButton from "./components/LikeButton";
 import Navbar from "./components/Navbar";
 import Layout from "./components/Layout";
 import ResourceList from "./components/ResourceList";
+import RegisterForm from "./components/RegisterForm";
 
 function App(){
 
@@ -13,6 +14,7 @@ function App(){
         <Layout>
 
             <ResourceList />
+            <RegisterForm />
            
         </Layout>
     )
