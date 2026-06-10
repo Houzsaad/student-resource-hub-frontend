@@ -1,4 +1,6 @@
 import "./Navbar.css"
+import LoginForm from "./LoginForm";
+import RegisterForm from "./RegisterForm";
 function Navbar({loading, search, error}){
     const isLoggedIn = Boolean(localStorage.getItem("access_token"));
 

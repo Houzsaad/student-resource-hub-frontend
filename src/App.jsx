@@ -15,6 +15,7 @@ function App(){
 
             <ResourceList />
             <RegisterForm />
+            <LoginForm />
            
         </Layout>
     )
