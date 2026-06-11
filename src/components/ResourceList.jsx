@@ -10,6 +10,8 @@ function ResourceList (){
 
     useEffect(() => {
         fetch(`http://127.0.0.1:8000/api/resources/resources/?search=${search}`)
+            
+
             .then(res=> {
                 console.log("Response:", res);
                 return res.json();
@@ -17,7 +19,7 @@ function ResourceList (){
 
             .then(data => {
                 console.log("data:", data);
-                setResources(data);  
+                setResources(data); 
             })
 
             .catch(err => {
@@ -29,6 +31,7 @@ function ResourceList (){
                 console.log("Finished");
                 setLoading(false);
             })
+
     },  [search]);
 
     if (loading) return <p>loading...</p>;

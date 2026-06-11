@@ -7,6 +7,7 @@ import Navbar from "./components/Navbar";
 import Layout from "./components/Layout";
 import ResourceList from "./components/ResourceList";
 import RegisterForm from "./components/RegisterForm";
+import UploadForm from "./components/UploadForm";
 
 function App(){
 
@@ -16,6 +17,7 @@ function App(){
             <ResourceList />
             <RegisterForm />
             <LoginForm />
+            <UploadForm />
            
         </Layout>
     )
