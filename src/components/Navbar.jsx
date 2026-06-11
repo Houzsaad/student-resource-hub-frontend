@@ -1,3 +1,7 @@
+import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
+
 import "./Navbar.css"
 import LoginForm from "./LoginForm";
 import RegisterForm from "./RegisterForm";
@@ -11,22 +15,22 @@ function Navbar({loading, search, error}){
         <nav>
             {isLoggedIn ? (
                 <>
-                    <a href="/home">Home</a>
-                    <a href="/browse">Browse</a>
-                    <a href="/upload">Upload</a>
-                    <a href="profile">Profile</a>
+                    <Link to="/">Home</Link>
+                    <Link to="resources">Browse</Link>
+                    {/* //<Link to="/login">Login</Link> */}
+                    <Link to="/upload">Posting</Link>
                     
                     <button onClick={() => {
                         localStorage.removeItem("access_token");
-                        window.location.href = "/login"
+                        navigate("/resources");
                     }}>Logout</button>
                 </>
                 ):(
                     <>
-                        <a href="/home">Home</a>
-                        <a href="/browse">Browse</a>
-                        <a href="/login">Login</a>
-                        <a href="/register">Register</a>
+                    <Link to="/">Home</Link>
+                    <Link to="resources">Browse</Link>
+                    <Link to="/login">Login</Link>
+                    <Link to="/register">Register</Link>
                     </>
                 )}
             

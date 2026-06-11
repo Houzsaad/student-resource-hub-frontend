@@ -1,15 +1,18 @@
-function ResourceCard({title, subject, category, createdAt,author}) {
+import { useNavigate } from "react-router-dom";
+
+function ResourceCard({id, title, category, description}) {
+
+  const navigate = useNavigate();
 
     return (
       <div className="card">
         <p>Title: {title}</p>
-        <p>Subject: {subject}</p> 
         <p>Category: {category}</p>
-        <p>Author: {author}</p>
-        <p>Created_at: {createdAt}</p>
-        <button>Open Resource</button>
+        <p>Description: {description}</p>
+        <button onClick={() => navigate(`/resources/${id}`)}>
+          Open Resource</button>
       </div>
 
-    )
-  };
+    );
+  }
   export default ResourceCard;

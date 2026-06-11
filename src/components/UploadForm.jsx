@@ -1,3 +1,5 @@
+import { useNavigate } from "react-router-dom";
+
 import { useState } from "react";
 
 function UploadForm() {
@@ -28,9 +30,11 @@ function UploadForm() {
         const data = await res.json();
         console.log(data);
 
-
+        const navigate = useNavigate();
         if(res.ok) {
             setError("Resource uploaded successufully")
+            setTimeout(() => 
+                navigate("/resources/"), 1500);
         } else {
             setError("Oops! Upload failed")
         }
