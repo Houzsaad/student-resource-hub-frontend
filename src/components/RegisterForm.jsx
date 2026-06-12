@@ -1,3 +1,5 @@
+import { registerUser } from "../api";
+
 import { useState } from "react";
 
 function RegisterForm(){

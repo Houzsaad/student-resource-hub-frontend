@@ -1,3 +1,5 @@
+import { getResources } from "../api";
+
 import { useEffect, useState } from "react";
 import ResourceCard from "./ResourceCard";
 
