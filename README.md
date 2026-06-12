@@ -1,16 +1,42 @@
-# React + Vite
+# STUDENT RESOURCE HUB FRONTEND
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React frontend for the SRH - a platform where students and lecturers can upload, browse, and search academic resources.
 
-Currently, two official plugins are available:
+## Tech Stack 
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- React (Vite)
+- Plain CSS
+- JWT Authentication
+- Fetch API
 
-## React Compiler
+## Features 
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Browse and search resources from the live API
+- Register and login with JWT auth
+- Upload resources (authenticated users only)
+- Auth-aware navigation - diffirent links for guests and logged-in users
+- Loadin, error, and empty states handled throughout
 
-## Expanding the ESLint configuration
+## Connected Backend 
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Django REST Framework API - [students-resources-hub] (https://github.com/Houzsaad/students-resources-hub)
+
+## Getting Started
+
+```bash
+npm install 
+npm run dev
+
+PROJECT STRUCTURE
+
+src/
+├── components/
+│   ├── Navbar.jsx
+│   ├── ResourceCard.jsx
+│   └── Layout.jsx
+├── pages/
+│   ├── ResourceList.jsx
+│   ├── LoginForm.jsx
+│   ├── RegisterForm.jsx
+│   └── UploadForm.jsx
+└── api.js
