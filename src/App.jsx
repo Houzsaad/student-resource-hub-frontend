@@ -1,4 +1,6 @@
-import { Routes, Route } from "react-router-dom";
+
+import { Routes, Route, BrowserRouter, Router } from "react-router-dom";
+import authHearders from "./api";
 
 import ResourceCard from "./components/ResourceCard";
 import ProfileCard from "./components/ProfileCard";
@@ -24,9 +26,12 @@ function App(){
                     <Route path="/upload" element={ <UploadForm />} />
 
                     <Route path="/resources/:id" element={<ResourceDetail />} />
+                    
+
                 </Routes>
         </Layout>
     )
 
 }
+
 export default App;

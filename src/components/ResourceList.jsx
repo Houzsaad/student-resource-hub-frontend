@@ -1,56 +1,46 @@
 import { getResources } from "../api";
-
 import { useEffect, useState } from "react";
 import ResourceCard from "./ResourceCard";
 
 function ResourceList (){
     const [resources, setResources] = useState([]);
-    const [search, setSearch] = useState("");
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [search, setSearch] = useState("");
 
-
-    useEffect(() => {
-        fetch(`http://127.0.0.1:8000/api/resources/resources/?search=${search}`)
-            
-
-            .then(res=> {
-                console.log("Response:", res);
-                return res.json();
-            })
-
+    useEffect(() =>{
+        console.log("Search value:", search);
+        
+        getResources(search)
             .then(data => {
-                console.log("data:", data);
-                setResources(data); 
-            })
+            console.log("value:", data);
+            setResources(data);
+        })
+            .catch(err =>  setErrorr(err.message))
+            .finally(() => setLoading(false));
+    }, [search]);
 
-            .catch(err => {
-                console.log("error:", err);
-                setError(err.message);
-            })
-
-            .finally(() => {
-                console.log("Finished");
-                setLoading(false);
-            })
-
-    },  [search]);
 
     if (loading) return <p>loading...</p>;
     if (error) return <p>Error: {error}</p>;
-    if (resources.length === 0) return <p>Resource Not Found</p>
 
-    return(
+
+    return (
         <div>
             <input 
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 placeholder="search resources..."
             />
+
+            {resources.length === 0 ? (
+                <p>Resource Not Found</p>
+            ) : (
             
-            {resources.map(r => 
-                <ResourceCard key={r.id} title={r.title} {...r} />
-            )}
+                resources.map(r => (
+                <ResourceCard key={r.id} {...r} />
+            ))
+        )}
         </div>
     );
 }

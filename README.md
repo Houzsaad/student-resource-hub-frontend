@@ -32,10 +32,12 @@ PROJECT STRUCTURE
 src/
 ├── components/
 │   ├── Navbar.jsx
+└── |--Navbar.css
 │   ├── ResourceCard.jsx
 │   └── Layout.jsx
 ├── pages/
 │   ├── ResourceList.jsx
+|---|--- ResourceDetail.jsx
 │   ├── LoginForm.jsx
 │   ├── RegisterForm.jsx
 │   └── UploadForm.jsx

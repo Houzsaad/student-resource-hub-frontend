@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 
 import { useState } from "react";
 
+const navigate = useNavigate();
+
 function UploadForm() {
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
@@ -32,8 +34,7 @@ function UploadForm() {
         const data = await res.json();
         console.log(data);
 
-        const navigate = useNavigate();
-        if(res.ok) {
+        if(data.id) {
             setError("Resource uploaded successufully")
             setTimeout(() => 
                 navigate("/resources/"), 1500);

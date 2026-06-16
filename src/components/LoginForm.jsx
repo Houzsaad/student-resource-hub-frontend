@@ -1,32 +1,23 @@
-import { loginUser } from "../api";
+import { useAuth } from "../context/AuthContext";
 
+import { loginUser } from "../api";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function LoginForm(){
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
-
-    // function handleChange(e) {
-    //     e.preventDefault();
-    // }
+    const { login } = useAuth();
+    const navigate = useNavigate();
 
     async function handleSubmit(e) {
         e.preventDefault();
-
-        const res = await fetch("http://127.0.0.1:8000/api/accounts/login/", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ email, password }),
-        });
-
-        const data = await res.json();
-        console.log("response:", data);
+        const data = await loginUser(email, password);
 
         if (data.access) {
-            localStorage.setItem("access_token", data.access);
-            localStorage.setItem("refresh_token", data.refresh);
-            window.location.href = "/resources";
+            login(data.access, data.refresh);
+            navigate("/resources")
         } else {
             setError("Invalid email or password");
         }

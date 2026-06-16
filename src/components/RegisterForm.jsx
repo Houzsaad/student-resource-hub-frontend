@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { registerUser } from "../api";
 
 import { useState } from "react";
@@ -5,6 +6,7 @@ import { useState } from "react";
 function RegisterForm(){
     const [form, setForm] = useState({ full_name: "", email: "", password: ""});
     const [error, setError] = useState("");
+    const navigate = useNavigate();
 
     function handleChange(e) {
         setForm({ ...form, [e.target.name]: e.target.value });
@@ -22,7 +24,13 @@ function RegisterForm(){
         });
         const data = await res.json();
         console.log(data)
-        if (!res.ok) setError("Registration Failed");
+
+        if (data.id) {
+            navigate("/login");
+        } else {
+            setError("Registration falied!");
+        }
+        
     }
             
 

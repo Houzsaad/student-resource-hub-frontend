@@ -6,8 +6,9 @@ function authHearders() {
 }
 
 export async function getResources(search = "") {
-    const res = await fetch(`${BASE}/resources/resources/?seach=${search}`);
-    return res.json();
+    const res = await fetch(`${BASE}/resources/resources/?search=${search}`);
+    const data = await res.json();
+    return data;
 }
 
 export async function getResource(id) {
@@ -16,10 +17,10 @@ export async function getResource(id) {
 }
 
 export async function loginUser(email, password) {
-    const res = await fetch(`${BASE}/127.0.0.1:8000/accounts/login/`, {
+    const res = await fetch(`http://127.0.0.1:8000/api/accounts/login/`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({email, password}),
     });
     return res.json();
 }
@@ -43,3 +44,5 @@ export async function uploadResource(formData) {
     });
     return res.json();
 }
+
+export default authHearders;
