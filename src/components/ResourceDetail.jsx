@@ -30,6 +30,8 @@ function ResourceDetail() {
             <h2>Title: {resource.title}</h2>
             <h2>Descriptoion: {resource.description}</h2>
             <h2>Uploaded by: {resource.uploaded_by}</h2>
+            <h2>Category: {resource.category_name}</h2>
+            <a href={resource.file} target="_blank" rel="noreferrer">Open File</a>
         </div>
     );
 }

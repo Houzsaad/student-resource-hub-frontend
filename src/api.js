@@ -1,4 +1,6 @@
-const BASE = "http://127.0.0.1:8000/api";
+//const BASE = "http://127.0.0.1:8000/api";
+const BASE = import.meta.env.VITE_API_URL || "http://127.0.0.1:8000/api";
+
 
 function authHearders() {
     const token = localStorage.getItem("access_token");
@@ -9,6 +11,11 @@ export async function getResources(search = "") {
     const res = await fetch(`${BASE}/resources/resources/?search=${search}`);
     const data = await res.json();
     return data;
+}
+
+export async function getCategories() {
+    const res = await fetch(`${BASE}/resources/categories/`);
+    return res.json();
 }
 
 export async function getResource(id) {
@@ -37,7 +44,7 @@ export async function registerUser(formData) {
 
 
 export async function uploadResource(formData) {
-    const res = await fetch(`${BASE}/127.0.0.1:8000/resources/resources/`, {
+    const res = await fetch(`${BASE}/resources/resources/`, {
         method: "POST",
         headers: authHearders(),
         body: (formData),
