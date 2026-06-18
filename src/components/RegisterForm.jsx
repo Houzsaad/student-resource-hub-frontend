@@ -4,7 +4,7 @@ import { registerUser } from "../api";
 import { useState } from "react";
 
 function RegisterForm(){
-    const [form, setForm] = useState({ full_name: "", email: "", password: ""});
+    const [form, setForm] = useState({ fullName: "", email: "", password: ""});
     const [error, setError] = useState("");
     const navigate = useNavigate();
 
@@ -42,7 +42,7 @@ function RegisterForm(){
     return (
         <form onSubmit={handleSubmit}>
             {error && <p className="error">{error}</p>}
-            <input name="full_name" value={form.full_name} onChange={handleChange} placeholder="Full Name" />
+            <input name="fullName" value={form.fullName} onChange={handleChange} placeholder="Full Name" />
             <input name="email" value={form.email} onChange={handleChange} placeholder="Email"/>
             <input name="password" type="password" value={form.password} onChange={handleChange} placeholder="Password"/>
             <button type="submit">Register</button>
