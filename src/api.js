@@ -24,7 +24,7 @@ export async function getResource(id) {
 }
 
 export async function loginUser(email, password) {
-    const res = await fetch(`http://127.0.0.1:8000/api/accounts/login/`, {
+    const res = await fetch(`${BASE}/accounts/login/`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({email, password}),
@@ -34,7 +34,7 @@ export async function loginUser(email, password) {
 
 
 export async function registerUser(formData) {
-    const res = await fetch(`${BASE}/auth/users/`, {
+    const res = await fetch(`${BASE}/accounts/register/`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
