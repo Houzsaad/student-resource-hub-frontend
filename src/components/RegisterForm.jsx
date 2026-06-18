@@ -17,13 +17,18 @@ function RegisterForm(){
         e.preventDefault();
         if (!form.email) return setError("Email is required");
 
-        const res = await fetch("http://127.0.0.1:8000/api/accounts/register/", {
-            method: "POST",
-            headers: { "Content-Type": "application/json",},
-            body: JSON.stringify(form),
+        const data = await redisterUser({
+            email: email,
+            full_name: fullName,
+            password: password
         });
-        const data = await res.json();
-        console.log(data)
+
+        // const res = await fetch("http://127.0.0.1:8000/api/accounts/register/", {
+        //     method: "POST",
+        //     headers: { "Content-Type": "application/json",},
+        //     body: JSON.stringify(form),
+        // const data = await res.json();
+        // console.log(data)
 
         if (data.id) {
             navigate("/login");

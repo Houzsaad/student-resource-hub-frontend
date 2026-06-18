@@ -34,7 +34,7 @@ export async function loginUser(email, password) {
 
 
 export async function registerUser(formData) {
-    const res = await fetch(`${BASE}/auth/users/`, {
+    const res = await fetch(`${BASE}/accounts/register/`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
