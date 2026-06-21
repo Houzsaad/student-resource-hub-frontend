@@ -17,7 +17,7 @@ function RegisterForm(){
         e.preventDefault();
         if (!form.email) return setError("Email is required");
 
-        const data = await redisterUser({
+        const data = await registerUser({
             email: email,
             full_name: fullName,
             password: password
