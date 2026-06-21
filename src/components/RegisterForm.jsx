@@ -18,9 +18,9 @@ function RegisterForm(){
         if (!form.email) return setError("Email is required");
 
         const data = await registerUser({
-            email: email,
-            full_name: fullName,
-            password: password
+            email: form.email,
+            full_name: form.fullName,
+            password: form.password
         });
 
         // const res = await fetch("http://127.0.0.1:8000/api/accounts/register/", {
