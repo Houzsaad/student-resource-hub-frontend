@@ -23,6 +23,14 @@ export async function getResource(id) {
     return res.json();
 }
 
+
+export async function getProfile() {
+    const res = await fetch(`${BASE}/accounts/profile/`, {
+        headers: authHearders(),
+    });
+    return res.json();
+}
+
 export async function loginUser(email, password) {
     const res = await fetch(`${BASE}/accounts/login/`, {
         method: "POST",
@@ -49,6 +57,10 @@ export async function uploadResource(formData) {
         headers: authHearders(),
         body: (formData),
     });
+     if (!res.ok) {
+        const errorData = await res.json().catch(() => ({}));
+        throw new Error(errorData.detail || "Server Error");
+    }
     return res.json();
 }
 

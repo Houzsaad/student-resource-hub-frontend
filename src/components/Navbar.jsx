@@ -18,7 +18,7 @@ function Navbar({loading, search, error}){
                     <Link to="resources">Home</Link>
                     {/* //<Link to="/login">Login</Link> */}
                     <Link to="/upload">Posting</Link>
-                    
+                    <Link to="/profile">Profile</Link>
                     <button onClick={logout}>Logout</button>
                 </>
                 ):(

@@ -13,6 +13,7 @@ import ResourceList from "./components/ResourceList";
 import RegisterForm from "./components/RegisterForm";
 import UploadForm from "./components/UploadForm";
 import ResourceDetail from "./components/ResourceDetail";
+import Profile from "./components/Profile";
 
 function App(){
 
@@ -27,6 +28,7 @@ function App(){
 
                     <Route path="/resources/:id" element={<ResourceDetail />} />
                     
+                    <Route path="/Profile" element={<Profile />} />
 
                 </Routes>
         </Layout>
