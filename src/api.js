@@ -64,4 +64,12 @@ export async function uploadResource(formData) {
     return res.json();
 }
 
+export async function downloadRes(id) {
+    const res = await fetch(`${BASE}/resources/resources/${id}/download/`, {
+        // method: "POST",
+        headers: authHearders(),
+    });
+    return res.json()
+}
+
 export default authHearders;

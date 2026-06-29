@@ -3,6 +3,8 @@ import { getResource } from "../api";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
+import DownloadResource from "./DownloadResources";
+
 function ResourceDetail() {
 
     const {id} = useParams();
@@ -32,6 +34,8 @@ function ResourceDetail() {
             <h2>Uploaded by: {resource.uploaded_by}</h2>
             <h2>Category: {resource.category_name}</h2>
             <a href={resource.file} target="_blank" rel="noreferrer">Open File</a>
+
+            <DownloadResource id={resource.id} fileUrl={resource.file} />
         </div>
     );
 }
