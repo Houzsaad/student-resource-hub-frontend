@@ -14,7 +14,7 @@ import RegisterForm from "./components/RegisterForm";
 import UploadForm from "./components/UploadForm";
 import ResourceDetail from "./components/ResourceDetail";
 import Profile from "./components/Profile";
-import DownloadResource from "./components/DownloadResources";
+import DownloadResource from "./components/DownloadResource";
 
 function App(){
 

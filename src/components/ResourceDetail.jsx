@@ -3,7 +3,7 @@ import { getResource } from "../api";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
-import DownloadResource from "./DownloadResources";
+import DownloadResource from "./DownloadResource";
 
 function ResourceDetail() {
 
@@ -35,7 +35,7 @@ function ResourceDetail() {
             <h2>Category: {resource.category_name}</h2>
             <a href={resource.file} target="_blank" rel="noreferrer">Open File</a>
 
-            <DownloadResource id={resource.id} fileUrl={resource.file} />
+            <DownloadResource id={resource.id} filename={resource.file} />
         </div>
     );
 }
