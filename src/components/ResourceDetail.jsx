@@ -5,6 +5,8 @@ import { useParams } from "react-router-dom";
 
 import DownloadResource from "./DownloadResource";
 
+import Comments from "./components/Comments";
+
 function ResourceDetail() {
 
     const {id} = useParams();
@@ -36,6 +38,8 @@ function ResourceDetail() {
             <a href={resource.file} target="_blank" rel="noreferrer">Open File</a>
 
             <DownloadResource id={resource.id} filename={resource.file} />
+
+            <Comments resourceId={resource.id} />
         </div>
     );
 }

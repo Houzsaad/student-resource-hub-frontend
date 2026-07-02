@@ -72,4 +72,26 @@ export async function downloadResource(id) {
     return res.blob()
 }
 
+export async function getComments(resourceId) {
+  const res = await fetch(`${BASE}/interactions/comments/?resource=${resourceId}`, {
+    headers: authHearders(),
+  });
+  return res.json();
+}
+
+export async function createComment(resourceId, body) {
+  const res = await fetch(`${BASE}/interactions/comments/`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      ...authHearders(),
+    },
+    body: JSON.stringify({
+      resource: resourceId,
+      body: body,
+    }),
+  });
+  return res.json();
+}
+
 export default authHearders;
