@@ -29,9 +29,9 @@ function Profile() {
     <div>
       <h2>My Profile</h2>
       <p>Full Name: {profile.full_name}</p>
-      <p>Email: {profile.email}</p>
+      {/* <p>Email: {profile.email}</p> */}
       <p>Role: {profile.role}</p>
-      <p>Department: {profile.department}</p>
+      {/* <p>Department: {profile.department}</p> */}
       <p>Level: {profile.level}</p>
       <p>Date Joined: {profile.date_joined}</p>
     </div>

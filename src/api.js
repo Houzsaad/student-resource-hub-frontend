@@ -73,9 +73,10 @@ export async function downloadResource(id) {
 }
 
 export async function getComments(resourceId) {
-  const res = await fetch(`${BASE}/interactions/comments/?resource=${resourceId}`, {
-    headers: authHearders(),
-  });
+  const res = await fetch(`${BASE}/interactions/comments/?resource=${resourceId}`);
+    // headers: authHearders(),
+  //});
+  
   return res.json();
 }
 
