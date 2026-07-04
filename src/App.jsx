@@ -4,7 +4,6 @@ import authHearders from "./api";
 
 import ResourceCard from "./components/ResourceCard";
 import ProfileCard from "./components/ProfileCard";
-import AgeCounter from "./components/AgeCounter";
 import LoginForm from "./components/LoginForm";
 import LikeButton from "./components/LikeButton";
 import Navbar from "./components/Navbar";

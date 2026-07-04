@@ -1,37 +1,30 @@
 import { useAuth } from "../context/AuthContext";
 import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
-import "./Navbar.css"
-import LoginForm from "./LoginForm";
-import RegisterForm from "./RegisterForm";
+import "./Navbar.css";
 
-function Navbar({loading, search, error}){
-    // const isLoggedIn = Boolean(localStorage.getItem("access_token"));
-    const { isLoggedIn, logout} = useAuth();
+function Navbar() {
+  const { isLoggedIn, logout } = useAuth();
 
-
-    return (
-        <nav>
-            {isLoggedIn ? (
-                <>
-                    {/* <Link to="/">Home</Link> */}
-                    <Link to="resources">Home</Link>
-                    {/* //<Link to="/login">Login</Link> */}
-                    <Link to="/upload">Posting</Link>
-                    <Link to="/profile">Profile</Link>
-                    <button onClick={logout}>Logout</button>
-                </>
-                ):(
-                    <>
-                    {/* <Link to="/">Home</Link> */}
-                    <Link to="resources">Home</Link>
-                    <Link to="/login">Login</Link>
-                    <Link to="/register">Register</Link>
-                    </>
-                )}
-            
-        </nav>
-    );
+  return (
+    <nav className="navbar">
+      <span className="navbar-logo">Student Resource Hub</span>
+      <div className="navbar-links">
+        <Link to="/resources">Home</Link>
+        {isLoggedIn ? (
+          <>
+            <Link to="/upload">Upload</Link>
+            <Link to="/profile">Profile</Link>
+            <button className="navbar-btn" onClick={logout}>Logout</button>
+          </>
+        ) : (
+          <>
+            <Link to="/login">Login</Link>
+            <Link to="/register">Register</Link>
+          </>
+        )}
+      </div>
+    </nav>
+  );
 }
 
 export default Navbar;

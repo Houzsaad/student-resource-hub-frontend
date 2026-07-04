@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 
 import DownloadResource from "./DownloadResource";
 
-import Comments from "./components/Comments";
+import Comments from "../components/Comments";
 
 function ResourceDetail() {
 
