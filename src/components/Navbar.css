@@ -26,6 +26,7 @@ nav a {
   font-weight: 700;
   color: #1a1a1a;
   letter-spacing: -0.5px;
+  white-space: nowrap;
 }
 
 .navbar-links {
@@ -45,7 +46,7 @@ nav a {
 }
 
 .navbar-btn {
-  background-color: #e11e1e;
+  background-color: #1a1a1a;
   color: #ffffff;
   border: none;
   padding: 8px 18px;
