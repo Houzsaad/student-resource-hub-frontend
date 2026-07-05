@@ -1,7 +1,9 @@
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { registerUser } from "../api";
 
 import { useState } from "react";
+
+import "./RegisterForm.css";
 
 function RegisterForm(){
     const [form, setForm] = useState({ fullName: "", email: "", password: ""});
@@ -38,15 +40,54 @@ function RegisterForm(){
         
     }
             
-
     return (
+        <div className="reg-page">
+            <div className="reg-card">
+            <h2>Create Account</h2>
+            <p className="reg-subtitle">Join our community and start enjoying the scrolling experience!</p>
+            {error && <p className="reg-error">{error}</p>}
+        
         <form onSubmit={handleSubmit}>
-            {error && <p className="error">{error}</p>}
-            <input name="fullName" value={form.fullName} onChange={handleChange} placeholder="Full Name" />
-            <input name="email" value={form.email} onChange={handleChange} placeholder="Email"/>
-            <input name="password" type="password" value={form.password} onChange={handleChange} placeholder="Password"/>
-            <button type="submit">Register</button>
-        </form>                
+          <div className="reg-form">
+            <p>Full Name</p>
+            <input 
+               name="fullName"
+               value={form.fullName} 
+               onChange={handleChange} 
+               placeholder="Full Name" 
+            />
+        </div>
+
+        <div className="reg-form">
+            <p>Email</p>
+               <input
+                name="email" 
+               value={form.email} 
+               onChange={handleChange} 
+               placeholder="Email"
+            /> 
+        </div>
+
+        <div className="reg-form">
+            <p>Password</p>
+            <input 
+               name="password" 
+               type="password" 
+               value={form.password} 
+               onChange={handleChange} 
+               placeholder="Password"
+            />
+        </div>
+
+            <button type="submit" className="register-btn">Register</button>
+
+            <div className="register-footer">
+                Already have an account? <Link to="/login">Login</Link>
+            </div>
+        </form>   
+        </div>             
+    </div>
+
     );
         
 }

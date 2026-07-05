@@ -36,12 +36,12 @@ nav a {
 
 .navbar-links a {
   font-size: 14px;
-  color: #6b7280;
+  color: #55575c;
   transition: color 0.2s;
 }
 
 .navbar-links a:hover {
-  color: #1a1a1a;
+  color: #3c2121;
 }
 
 .navbar-btn {

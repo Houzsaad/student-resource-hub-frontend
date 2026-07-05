@@ -3,7 +3,7 @@ function Layout({ children }) {
     return (
         <>
 
-            <h1>SRH FrontEnd</h1>
+            <h1>SRH_APP</h1>
                   
             <Navbar />
            

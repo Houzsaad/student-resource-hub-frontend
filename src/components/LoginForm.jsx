@@ -2,7 +2,9 @@ import { useAuth } from "../context/AuthContext";
 
 import { loginUser } from "../api";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+
+import "./LoginForm.css";
 
 function LoginForm(){
     const [email, setEmail] = useState("");
@@ -24,23 +26,42 @@ function LoginForm(){
     }
 
     return(
-        <form onSubmit={handleSubmit}>
-            {error && <p style={{ color: "red"}}>{error}</p>}
-            <input 
-                type="email"
-                value={email}
-                onChange={e => setEmail(e.target.value)}
-                placeholder="Enter your email"
-            />
+        <div className="login-page">
+            <div className="login-card">
+                <h2>Welcome Back!</h2>
+                <p className="login-subtitle">Login to access your resources</p>
 
+                {error && <p className="form-error">{error}</p>}
+
+            <form onSubmit={handleSubmit}>
+                <div className="form-group">
+                    <label>Email</label>
+                    <input 
+                        type="email"
+                        value={email}
+                        onChange={e => setEmail(e.target.value)}
+                        placeholder="Enter your email"
+                    />
+                </div>
+
+            <div className="form-group">
+            <label>Password</label>
             <input 
-                type="password"
-                value={password}
-                onChange={e => setPassword(e.target.value)}
-                placeholder="Enter your password"
-            />
-            <button type="submit">Login</button>
+                    type="password"
+                    value={password}
+                    onChange={e => setPassword(e.target.value)}
+                    placeholder="Enter your password"
+                />
+            </div>
+
+            <button type="submit" className="login-btn">Login</button>
         </form>
+
+        <div className="login-footer">
+            Don't have an account? <Link to="/register">Register</Link>
+        </div>
+    </div>
+    </div>
     );
 }
 export default LoginForm;
