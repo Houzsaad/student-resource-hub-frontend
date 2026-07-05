@@ -1,16 +1,15 @@
 import Navbar from "./Navbar";
-function Layout({ children }) {
-    return (
-        <>
+import "./Layout.css";
 
-            <h1>SRH_APP</h1>
-                  
-            <Navbar />
-           
-            <main>
-                {children}
-            </main>
-        </>
-    );
+function Layout({ children }) {
+  return (
+    <>
+      <Navbar />
+      <main className="layout-main">
+        {children}
+      </main>
+    </>
+  );
 }
-export default  Layout;
+
+export default Layout;

@@ -7,7 +7,10 @@ function Navbar() {
 
   return (
     <nav className="navbar">
-      <span className="navbar-logo">Student Resource Hub</span>
+      <Link to="/resources" className="navbar-logo">
+        Student Resource Hub
+      </Link>
+      
       <div className="navbar-links">
         <Link to="/resources">Home</Link>
         {isLoggedIn ? (

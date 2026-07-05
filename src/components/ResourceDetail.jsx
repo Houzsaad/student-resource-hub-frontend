@@ -1,46 +1,65 @@
-import { useFetch } from "../hooks/useFetch";
-import { getResource } from "../api";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-
+import { getResource } from "../api";
 import DownloadResource from "./DownloadResource";
-
 import Comments from "../components/Comments";
+import "./ResourceDetail.css";
 
 function ResourceDetail() {
+  const { id } = useParams();
+  const [resource, setResource] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-    const {id} = useParams();
-    const [loading, setLoading] = useState(true);
-    const [resource, setResource] = useState(null);
-    const [error, setError] = useState(null);
+  useEffect(() => {
+    getResource(id)
+      .then(data => setResource(data))
+      .catch(err => setError(err.message))
+      .finally(() => setLoading(false));
+  }, [id]);
 
-    useEffect(() => {
-        getResource(id)
-            .then(data => {
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error}</p>;
+  if (!resource) return <p>Resource not found</p>;
 
-            console.log("value:", data);
-            setResource(data);
-        })
-            .catch(err =>  setError(err.message))
-            .finally(() => setLoading(false));
-    }, [id]);
-   
-    if (loading) return <p>Loading...</p>;
-    if (error) return <p>Error: {error}</p>;
-    if (!resource) return <p>Resource Not Found</p>;
+  return (
+    <div className="resource-detail-page">
+      <div className="resource-detail-card">
+        <h2 className="resource-detail-title">{resource.title}</h2>
+        <p className="resource-detail-description">{resource.description}</p>
 
-    return (
-        <div>
-            <h2>Title: {resource.title}</h2>
-            <h2>Descriptoion: {resource.description}</h2>
-            <h2>Uploaded by: {resource.uploaded_by}</h2>
-            <h2>Category: {resource.category_name}</h2>
-            <a href={resource.file} target="_blank" rel="noreferrer">Open File</a>
-
-            <DownloadResource id={resource.id} filename={resource.file} />
-
-            <Comments resourceId={resource.id} />
+        <div className="resource-detail-meta">
+          <p className="resource-meta-item">
+            Uploaded by: <span>{resource.uploaded_by}</span>
+          </p>
+          <p className="resource-meta-item">
+            Category: <span>{resource.category_name}</span>
+          </p>
         </div>
-    );
+
+        <div className="resource-actions">
+          <a
+            className="open-file-btn"
+            href={resource.file}
+            target="_blank"
+            rel="noreferrer"
+          >
+            Open File
+          </a>
+          <DownloadResource
+            id={resource.id}
+            filename={resource.title}
+            initialCount={resource.download_count}
+          />
+        </div>
+      </div>
+
+      <div className="comments-section">
+        <h3 className="comments-title">Comments</h3>
+        <Comments resourceId={resource.id} />
+      </div>
+    </div>
+  );
 }
+
 export default ResourceDetail;

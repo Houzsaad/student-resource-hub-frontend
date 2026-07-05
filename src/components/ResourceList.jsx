@@ -2,6 +2,8 @@ import { getResources } from "../api";
 import { useEffect, useState } from "react";
 import ResourceCard from "./ResourceCard";
 
+import "./ResourceList.css";
+
 function ResourceList (){
     const [resources, setResources] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -14,9 +16,9 @@ function ResourceList (){
         getResources(search)
             .then(data => {
             console.log("value:", data);
-            setResources(data);
+            setResources(data || []);
         })
-            .catch(err =>  setErrorr(err.message))
+            .catch(err =>  setError(err.message))
             .finally(() => setLoading(false));
     }, [search]);
 
@@ -26,7 +28,7 @@ function ResourceList (){
 
 
     return (
-        <div>
+        <div className="resource-list-page">
             <input 
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
@@ -34,13 +36,14 @@ function ResourceList (){
             />
 
             {resources.length === 0 ? (
-                <p>Resource Not Found</p>
+                <p className="empty-state">Resource Not Found</p>
             ) : (
-            
-                resources.map(r => (
-                <ResourceCard key={r.id} {...r} />
-            ))
-        )}
+                <div className="resource-grid">
+                    {resources.map(r => (
+                        <ResourceCard key={r.id} {...r} />
+                    ))}
+                </div>
+            )}
         </div>
     );
 }

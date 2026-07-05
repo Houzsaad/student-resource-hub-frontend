@@ -1,6 +1,7 @@
 import { getCategories, uploadResource } from "../api";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
+import "./UploadForm.css";
 
 function UploadForm() {
   const navigate = useNavigate();
@@ -10,6 +11,7 @@ function UploadForm() {
   const [categoryId, setCategoryId] = useState("");
   const [categories, setCategories] = useState([]);
   const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
 
   useEffect(() => {
     getCategories().then(data => setCategories(data.results || data));
@@ -25,10 +27,9 @@ function UploadForm() {
     formData.append("category", categoryId);
 
     const data = await uploadResource(formData);
-    console.log(data);
 
     if (data.id) {
-      setError("Resource uploaded successfully");
+      setSuccess("Resource uploaded successfully");
       setTimeout(() => navigate("/resources/"), 1500);
     } else {
       setError("Oops! Upload failed");
@@ -36,36 +37,59 @@ function UploadForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <h2>Upload Resource</h2>
-      {error && <p style={{ color: "red" }}>{error}</p>}
+    <div className="upload-page">
+      <div className="upload-card">
+        <h2>Upload Resource</h2>
+        <p className="upload-subtitle">Share your notes, PDFs or links with others</p>
 
-      <textarea
-        placeholder="write the content title"
-        value={title}
-        onChange={e => setTitle(e.target.value)}
-      />
+        {success && <p className="upload-success">{success}</p>}
+        {error && <p className="upload-error">{error}</p>}
 
-      <textarea
-        value={description}
-        onChange={e => setDescription(e.target.value)}
-        placeholder="write the content description"
-      />
+        <form onSubmit={handleSubmit}>
+          <div className="upload-form-group">
+            <label>Title</label>
+            <textarea
+              placeholder="Write the resource title"
+              value={title}
+              onChange={e => setTitle(e.target.value)}
+            />
+          </div>
 
-      <select value={categoryId} onChange={e => setCategoryId(e.target.value)}>
-        <option value="">Select a category</option>
-        {categories.map(cat => (
-          <option key={cat.id} value={cat.id}>{cat.name}</option>
-        ))}
-      </select>
+          <div className="upload-form-group">
+            <label>Description</label>
+            <textarea
+              value={description}
+              onChange={e => setDescription(e.target.value)}
+              placeholder="Write a short description"
+            />
+          </div>
 
-      <input
-        type="file"
-        onChange={e => setFile(e.target.files[0])}
-      />
+          <div className="upload-form-group">
+            <label>Category</label>
+            <select
+              value={categoryId}
+              onChange={e => setCategoryId(e.target.value)}
+            >
+              <option value="">Select a category</option>
+              {categories.map(cat => (
+                <option key={cat.id} value={cat.id}>{cat.name}</option>
+              ))}
+            </select>
+          </div>
 
-      <button type="submit">Upload</button>
-    </form>
+          <div className="upload-form-group">
+            <label>File</label>
+            <input
+              className="upload-file-input"
+              type="file"
+              onChange={e => setFile(e.target.files[0])}
+            />
+          </div>
+
+          <button type="submit" className="upload-btn">Upload</button>
+        </form>
+      </div>
+    </div>
   );
 }
 
