@@ -43,11 +43,11 @@ A full-stack web application where students and lecturers can upload, browse, se
 ## Project Structure
 
 src/
-├── api.js                    ← all API calls in one place
+├── api.js                    
 ├── context/
-│   └── AuthContext.jsx       ← global auth state
+│   └── AuthContext.jsx       
 ├── hooks/
-│   └── useFetch.js           ← reusable fetch hook
+│   └── useFetch.js           
 └── components/
 ├── Navbar.jsx
 ├── Layout.jsx
