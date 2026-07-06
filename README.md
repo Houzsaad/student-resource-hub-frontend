@@ -42,24 +42,26 @@ A full-stack web application where students and lecturers can upload, browse, se
 
 ## Project Structure
 
+```text
 src/
-├── api.js                    
+├── api.js
 ├── context/
-│   └── AuthContext.jsx       
+│   └── AuthContext.jsx
 ├── hooks/
-│   └── useFetch.js           
+│   └── useFetch.js
 └── components/
-├── Navbar.jsx
-├── Layout.jsx
-├── ResourceCard.jsx
-├── ResourceDetail.jsx
-├── ResourceList.jsx
-├── LoginForm.jsx
-├── RegisterForm.jsx
-├── UploadForm.jsx
-├── Profile.jsx
-├── Comments.jsx
-└── DownloadResource.jsx
+    ├── Navbar.jsx
+    ├── Layout.jsx
+    ├── ResourceCard.jsx
+    ├── ResourceDetail.jsx
+    ├── ResourceList.jsx
+    ├── LoginForm.jsx
+    ├── RegisterForm.jsx
+    ├── UploadForm.jsx
+    ├── Profile.jsx
+    ├── Comments.jsx
+    └── DownloadResource.jsx
+```
 
 ## Running Locally
 
@@ -83,7 +85,9 @@ Sees the list of resources you upload in your profile
 
 Author
 Huzaifa Sa'ad
+
 Self-taught fullstack developer — Django + React
+
 📧 houzsaad@gmail.com
 🐙 github.com/Houzsaad
 💼 fiverr.com/s/Q78QpXP
