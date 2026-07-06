@@ -1,44 +1,89 @@
-# STUDENT RESOURCE HUB FRONTEND
+# Student Resource Hub
 
-A React frontend for the SRH - a platform where students and lecturers can upload, browse, and search academic resources.
+A full-stack web application where students and lecturers can upload, browse, search, and download academic resources.
 
-## Tech Stack 
+**Live Demo:** https://srh-frontend.vercel.app  
+**Backend API:** https://student-resource-hub-qx57.onrender.com  
+**Hire me:** https://fiverr.com/s/Q78QpXP
 
-- React (Vite)
+---
+
+## What it does
+
+- Students and lecturers register and login with JWT authentication
+- Browse and search academic resources by title
+- Upload resources (PDFs, images, videos) with category and description
+- Download resources with download counter
+- Comment on resources
+- Auth-aware navigation — guests see different links from logged-in users
+- Protected routes — upload, comment and download requires authentication
+- User profile page showing name, role, level and join date
+
+---
+
+## Tech Stack
+
+**Frontend**
+- React 18 (Vite)
+- React Router v6
+- Context API for global auth state
+- Custom hooks
 - Plain CSS
-- JWT Authentication
-- Fetch API
 
-## Features 
+**Backend**
+- Django 5.2
+- Django REST Framework
+- Simple JWT authentication
+- PostgreSQL
+- Cloudinary (file storage)
+- Deployed on Render
 
-- Browse and search resources from the live API
-- Register and login with JWT auth
-- Upload resources (authenticated users only)
-- Auth-aware navigation - diffirent links for guests and logged-in users
-- Loadin, error, and empty states handled throughout
+---
 
-## Connected Backend 
-
-Django REST Framework API - [students-resources-hub] (https://github.com/Houzsaad/students-resources-hub)
-
-## Getting Started
-
-```bash
-npm install 
-npm run dev
-
-PROJECT STRUCTURE
+## Project Structure
 
 src/
-├── components/
-│   ├── Navbar.jsx
-└── |--Navbar.css
-│   ├── ResourceCard.jsx
-│   └── Layout.jsx
-├── pages/
-│   ├── ResourceList.jsx
-|---|--- ResourceDetail.jsx
-│   ├── LoginForm.jsx
-│   ├── RegisterForm.jsx
-│   └── UploadForm.jsx
-└── api.js
+├── api.js                    ← all API calls in one place
+├── context/
+│   └── AuthContext.jsx       ← global auth state
+├── hooks/
+│   └── useFetch.js           ← reusable fetch hook
+└── components/
+├── Navbar.jsx
+├── Layout.jsx
+├── ResourceCard.jsx
+├── ResourceDetail.jsx
+├── ResourceList.jsx
+├── LoginForm.jsx
+├── RegisterForm.jsx
+├── UploadForm.jsx
+├── Profile.jsx
+├── Comments.jsx
+└── DownloadResource.jsx
+
+## Running Locally
+
+```bash
+# Install dependencies
+npm install
+
+# Create .env file
+VITE_API_URL=http://127.0.0.1:8000/api
+
+# Start development server
+npm run dev
+
+Backend Repository
+Django REST Framework API → 
+student-resource-hub
+
+Features in Progress
+Edit and delete own resource
+Sees the list of resources you upload in your profile
+
+Author
+Huzaifa Sa'ad
+Self-taught fullstack developer — Django + React
+📧 houzsaad@gmail.com
+🐙 github.com/Houzsaad
+💼 fiverr.com/s/Q78QpXP
