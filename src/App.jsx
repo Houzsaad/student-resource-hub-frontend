@@ -14,6 +14,7 @@ import UploadForm from "./components/UploadForm";
 import ResourceDetail from "./components/ResourceDetail";
 import Profile from "./components/Profile";
 import DownloadResource from "./components/DownloadResource";
+import ShimmerCard from "./components/ShimmerCard";
 
 function App(){
 
@@ -31,6 +32,8 @@ function App(){
                     <Route path="/Profile" element={<Profile />} />
 
                     <Route path="/download" element={<DownloadResource />} />
+
+                    <Route path="/shimmer" element={<ShimmerCard />} />
 
                 </Routes>
         </Layout>
