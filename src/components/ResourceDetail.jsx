@@ -5,6 +5,8 @@ import DownloadResource from "./DownloadResource";
 import Comments from "../components/Comments";
 import "./ResourceDetail.css";
 
+import ShimmerCard from "./ShimmerCard";
+
 function ResourceDetail() {
   const { id } = useParams();
   const [resource, setResource] = useState(null);
@@ -18,7 +20,7 @@ function ResourceDetail() {
       .finally(() => setLoading(false));
   }, [id]);
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <ShimmerCard />;
   if (error) return <p>Error: {error}</p>;
   if (!resource) return <p>Resource not found</p>;
 
