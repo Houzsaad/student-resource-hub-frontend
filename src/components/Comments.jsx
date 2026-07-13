@@ -6,6 +6,8 @@ import { Link } from "react-router-dom";
 
 import "./Comments.css";
 
+import ShimmerCard from "./ShimmerCard";
+
 function Comments({ resourceId }) {
   const [comments, setComments] = useState([]);
   const [body, setBody] = useState("");
@@ -34,7 +36,7 @@ function Comments({ resourceId }) {
     }
   }
 
-  if (loading) return <p>Loading comments...</p>;
+  if (loading) return <ShimmerCard />;
 return (
     <div>
       <h3 className="comments-header">
