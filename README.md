@@ -63,6 +63,37 @@ src/
     └── DownloadResource.jsx
 ```
 
+
+## Login Page
+<p align="center">
+    <img src="https://github.com/Houzsaad/c:\Users\user\Pictures\Annotation 2026-07-05 001737.png" width="250"/>
+</p>
+
+## Upload Resource Page
+<p align="center">
+    <img src="https://github.com/Houzsaad/c:\Users\user\Pictures\Annotation 2026-07-06 125416.png" width="250"/>
+</p>
+
+
+## Resources List Page
+<p align="center">
+    <img src="https://github.com/Houzsaad/c:\Users\user\Pictures\Annotation 2026-07-06 125240.png" width="250"/>
+</p>
+
+
+## Profile Page
+<p align="center">
+    <img src="https://github.com/Houzsaad/c:\Users\user\Pictures\Annotation 2026-07-06 130240.png" width="250"/>
+</p>
+
+
+## Resource Details Page
+<p align="center">
+    <img src="https://github.com/Houzsaad/c:\Users\user\Pictures\Annotation 2026-07-06 125333.png" width="250"/>
+</p>
+
+
+
 ## Running Locally
 
 ```bash
