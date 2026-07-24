@@ -9,12 +9,17 @@ import "./LoginForm.css";
 function LoginForm(){
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const [error, setError] = useState("");
+    const [error, setError] = useState(""); 
+
+    const [loading, setLoading] = useState(false);
+
     const { login } = useAuth();
     const navigate = useNavigate();
 
     async function handleSubmit(e) {
         e.preventDefault();
+        setLoading(true);
+
         const data = await loginUser(email, password);
 
         if (data.access) {
@@ -22,6 +27,7 @@ function LoginForm(){
             navigate("/resources")
         } else {
             setError("Invalid email or password");
+            setLoading(false);
         }
     }
 
@@ -54,7 +60,13 @@ function LoginForm(){
                 />
             </div>
 
-            <button type="submit" className="login-btn">Login</button>
+            <button 
+                type="submit" 
+                className="login-btn"
+                disabled={loading}
+            >
+                {loading ? "Logging in..." : "Login"}
+            </button>
         </form>
 
         <div className="login-footer">

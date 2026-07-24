@@ -10,6 +10,8 @@ function RegisterForm(){
     const [error, setError] = useState("");
     const navigate = useNavigate();
 
+    const [loading, setLoading] = useState(false);
+
     function handleChange(e) {
         setForm({ ...form, [e.target.name]: e.target.value });
     }
@@ -18,6 +20,7 @@ function RegisterForm(){
     async function handleSubmit(e){
         e.preventDefault();
         if (!form.email) return setError("Email is required");
+        setLoading(true);
 
         const data = await registerUser({
             email: form.email,
@@ -36,6 +39,7 @@ function RegisterForm(){
             navigate("/login");
         } else {
             setError("Registration falied!");
+            setLoading(false);
         }
         
     }
@@ -79,7 +83,13 @@ function RegisterForm(){
             />
         </div>
 
-            <button type="submit" className="register-btn">Register</button>
+            <button 
+                type="submit" 
+                className="register-btn"
+                disabled={loading}
+            >
+                {loading ? "Creating account..." : "Register"}
+            </button>
 
             <div className="register-footer">
                 Already have an account? <Link to="/login">Login</Link>
@@ -88,7 +98,6 @@ function RegisterForm(){
         </div>             
     </div>
 
-    );
-        
+    );  
 }
 export default RegisterForm;

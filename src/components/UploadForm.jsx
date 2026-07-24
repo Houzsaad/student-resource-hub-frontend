@@ -13,6 +13,8 @@ function UploadForm() {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
 
+  const [loading, setLoading] = useState(false);
+
   useEffect(() => {
     getCategories().then(data => setCategories(data.results || data));
   }, []);
@@ -26,6 +28,8 @@ function UploadForm() {
     formData.append("file", file);
     formData.append("category", categoryId);
 
+    setLoading(true);
+
     const data = await uploadResource(formData);
 
     if (data.id) {
@@ -33,6 +37,7 @@ function UploadForm() {
       setTimeout(() => navigate("/resources/"), 1500);
     } else {
       setError("Oops! Upload failed");
+      setLoading(false);
     }
   }
 
@@ -86,7 +91,13 @@ function UploadForm() {
             />
           </div>
 
-          <button type="submit" className="upload-btn">Upload</button>
+          <button 
+            type="submit" 
+            className="upload-btn"
+            disabled={loading}
+          >
+            {setLoading ? "Uploading resoures..." : "Upload"}
+          </button>
         </form>
       </div>
     </div>
