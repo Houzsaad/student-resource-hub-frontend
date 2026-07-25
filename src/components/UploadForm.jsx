@@ -96,7 +96,7 @@ function UploadForm() {
             className="upload-btn"
             disabled={loading}
           >
-            {setLoading ? "Uploading resoures..." : "Upload"}
+            {loading ? "Uploading..." : "Upload"}
           </button>
         </form>
       </div>
