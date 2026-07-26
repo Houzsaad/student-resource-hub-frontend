@@ -66,7 +66,7 @@ src/
 
 ## Login Page
 <p align="center">
-    <img src="Pictures\Annotation 2026-07-05 001737.png" width="250"/>
+    <img src="images/registration.png" width="250"/>
 </p>
 
 ## Upload Resource Page
