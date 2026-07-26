@@ -64,14 +64,15 @@ src/
 ```
 
 
-## Login Page
+## Registration Page
 <p align="center">
     <img src="registration.png" width="250"/>
 </p>
 
-## Upload Resource Page
+
+## Login Page
 <p align="center">
-    <img src=".png" width="250"/>
+    <img src="login.png" width="250"/>
 </p>
 
 
@@ -83,7 +84,12 @@ src/
 
 ## Profile Page
 <p align="center">
-    <img src="login.png" width="250"/>
+    <img src="profile.png" width="250"/>
+</p>
+
+## Upload Resource Page
+<p align="center">
+    <img src="upload.png" width="250"/>
 </p>
 
 
