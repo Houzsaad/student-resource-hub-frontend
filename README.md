@@ -93,6 +93,19 @@ src/
 </p>
 
 
+![alt text](<Annotation 2026-07-05 001737.png>)
+
+![Registration Page](<images/Annotation 2026-07-22 164159.png>)
+
+![Login Page](<images/Annotation 2026-07-05 001737-1.png>)
+
+![Resources Page](<images/Annotation 2026-07-06 130240.png>)
+
+![Upload Page](<images/Annotation 2026-07-06 125240-1.png>)
+
+![Profile Page](<images/Annotation 2026-07-06 125240-2.png>)
+
+![Resource Detail Page](<images/Annotation 2026-07-06 125333.png>)
 
 ## Running Locally
 
