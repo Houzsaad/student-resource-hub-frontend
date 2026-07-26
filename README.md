@@ -89,7 +89,7 @@ src/
 
 ## Resource Details Page
 <p align="center">
-    <img src="Pictures/Annotation 2026-07-06 125333.png" width="250"/>
+    <img src="Pictures\Annotation 2026-07-06 125333.png" width="250"/>
 </p>
 
 
