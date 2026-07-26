@@ -66,24 +66,24 @@ src/
 
 ## Login Page
 <p align="center">
-    <img src="images/registration.png" width="250"/>
+    <img src="registration.png" width="250"/>
 </p>
 
 ## Upload Resource Page
 <p align="center">
-    <img src="Pictures/Annotation 2026-07-06 125416.png" width="250"/>
+    <img src=".png" width="250"/>
 </p>
 
 
 ## Resources List Page
 <p align="center">
-    <img src="Pictures/Annotation 2026-07-06 125240.png" width="250"/>
+    <img src="resources.png" width="250"/>
 </p>
 
 
 ## Profile Page
 <p align="center">
-    <img src="Pictures/Annotation 2026-07-06 130240.png" width="250"/>
+    <img src="login.png" width="250"/>
 </p>
 
 
