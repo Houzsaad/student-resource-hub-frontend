@@ -8,11 +8,12 @@ function UploadForm() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [file, setFile] = useState(null);
+  const [link, setLink] = useState("");
   const [categoryId, setCategoryId] = useState("");
   const [categories, setCategories] = useState([]);
+  const [resourceType, setResourceType] = useState("pdf");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
-
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -22,13 +23,25 @@ function UploadForm() {
   async function handleSubmit(e) {
     e.preventDefault();
 
+    if (!title) return setError("Title is required");
+    if (!categoryId) return setError("Please select a category");
+    if (resourceType === "link" && !link) return setError("Please enter a URL");
+    if (resourceType !== "link" && !file) return setError("Please select a file");
+
     const formData = new FormData();
     formData.append("title", title);
     formData.append("description", description);
-    formData.append("file", file);
     formData.append("category", categoryId);
+    formData.append("resource_type", resourceType);
+
+    if (resourceType === "link") {
+      formData.append("link", link);
+    } else {
+      formData.append("file", file);
+    }
 
     setLoading(true);
+    setError("");
 
     const data = await uploadResource(formData);
 
@@ -45,12 +58,32 @@ function UploadForm() {
     <div className="upload-page">
       <div className="upload-card">
         <h2>Upload Resource</h2>
-        <p className="upload-subtitle">Share your notes, PDFs or links with others</p>
+        <p className="upload-subtitle">
+          Share your notes, PDFs, videos or links with others
+        </p>
 
         {success && <p className="upload-success">{success}</p>}
         {error && <p className="upload-error">{error}</p>}
 
         <form onSubmit={handleSubmit}>
+
+          <div className="upload-form-group">
+            <label>Resource Type</label>
+            <select
+              value={resourceType}
+              onChange={e => {
+                setResourceType(e.target.value);
+                setFile(null);
+                setLink("");
+                setError("");
+              }}
+            >
+              <option value="pdf">PDF</option>
+              <option value="video">Video</option>
+              <option value="link">Link (URL)</option>
+            </select>
+          </div>
+
           <div className="upload-form-group">
             <label>Title</label>
             <textarea
@@ -82,22 +115,38 @@ function UploadForm() {
             </select>
           </div>
 
-          <div className="upload-form-group">
-            <label>File</label>
-            <input
-              className="upload-file-input"
-              type="file"
-              onChange={e => setFile(e.target.files[0])}
-            />
-          </div>
+          {resourceType === "link" ? (
+            <div className="upload-form-group">
+              <label>URL</label>
+              <input
+                type="url"
+                value={link}
+                onChange={e => setLink(e.target.value)}
+                placeholder="https://..."
+              />
+            </div>
+          ) : (
+            <div className="upload-form-group">
+              <label>
+                {resourceType === "pdf" ? "PDF File" : "Video File"}
+              </label>
+              <input
+                className="upload-file-input"
+                type="file"
+                accept={resourceType === "pdf" ? ".pdf" : "video/*"}
+                onChange={e => setFile(e.target.files[0])}
+              />
+            </div>
+          )}
 
-          <button 
-            type="submit" 
+          <button
+            type="submit"
             className="upload-btn"
             disabled={loading}
           >
             {loading ? "Uploading..." : "Upload"}
           </button>
+
         </form>
       </div>
     </div>
