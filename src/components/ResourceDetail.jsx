@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { href, useParams } from "react-router-dom";
 import { getResource } from "../api";
 import DownloadResource from "./DownloadResource";
 import Comments from "../components/Comments";
@@ -12,6 +12,11 @@ function ResourceDetail() {
   const [resource, setResource] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+
+  const isPDF = resource.file && resource.file.include('.pdf');
+  const fileUrl = isPDF
+    ? resource.file.replace('/upload', '/upload/fl_attachment/')
+    : resource.file;
 
   useEffect(() => {
     getResource(id)
