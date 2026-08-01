@@ -15,8 +15,8 @@ function ResourceDetail() {
 
   const isPDF = resource.file && resource.file.include('.pdf');
   const fileUrl = isPDF
-    ? resource.file.replace('/upload', '/upload/fl_attachment/')
-    : resource.file;
+    ? resource.file
+    : resource.file || resource.link;
 
   useEffect(() => {
     getResource(id)
