@@ -50,7 +50,7 @@ function ResourceDetail() {
           </p>
         </div>
 
-        <div className="resource-action">
+        <div className="resource-actions">
           {isLink ? (
             <a 
               className="open-file-btn"
@@ -63,10 +63,10 @@ function ResourceDetail() {
           ) : (
             <>
               <a
-               className="open-file-btn"
-               href={resource.link}
-               target="_blank"
-               rel="noreferrer"
+                className="open-file-btn"
+                href={resource.link}
+                target="_blank"
+                rel="noreferrer"
           >
             {isPDF ?  "Open PDF" : "Open File"}
           </a>
