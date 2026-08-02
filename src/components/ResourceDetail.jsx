@@ -64,7 +64,7 @@ function ResourceDetail() {
             <>
               <a
                 className="open-file-btn"
-                href={resource.link}
+                href={fileUrl}
                 target="_blank"
                 rel="noreferrer"
               >
