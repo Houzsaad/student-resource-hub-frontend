@@ -46,7 +46,7 @@ function ResourceDetail() {
           </p>
 
            <p className="resource-meta-item">
-            Category: <span>{resource.resource_type?.toUpperCase()}</span>
+            Type: <span>{resource.resource_type?.toUpperCase()}</span>
           </p>
         </div>
 
@@ -54,11 +54,11 @@ function ResourceDetail() {
           {isLink ? (
             <a 
               className="open-file-btn"
-              href={resource.file}
+              href={resource.link}
               target="_blank"
               rel="noreferrer"
           >
-            Open File
+            Open Link
           </a>   
           ) : (
             <>
@@ -67,20 +67,21 @@ function ResourceDetail() {
                 href={resource.link}
                 target="_blank"
                 rel="noreferrer"
-          >
-            {isPDF ?  "Open PDF" : "Open File"}
-          </a>
-           <DownloadResource
-            id={resource.id}
-            filename={resource.title}
-            initialCount={resource.download_count}
-          />
+              >
+                {isPDF ?  "Open PDF" : "Open File"}
+              </a>
+
+              <DownloadResource
+              id={resource.id}
+              filename={resource.title}
+              initialCount={resource.download_count}
+            />
           </>
           )}
         </div>
-        </div>
+      </div>
 
-         <div className="comments-section">
+      <div className="comments-section">
         <h3 className="comments-title">Comments</h3>
         <Comments resourceId={resource.id} />
       </div>
