@@ -26,7 +26,7 @@ function ResourceDetail() {
 
   const isPDF = resource.file && resource.file.includes(".pdf");
   const fileUrl = isPDF
-    ? resource.file.replace("/upload", "/upload/fl_attachment/")
+    ? resource.file.replace("/image/upload/", "/raw/upload/")
     : resource.file || resource.link;
 
   const isLink = resource.resource_type === "link";
