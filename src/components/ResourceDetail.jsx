@@ -27,7 +27,8 @@ function ResourceDetail() {
   const isPDF = resource.file && resource.file.includes(".pdf");
   const fileUrl = isPDF
     ? resource.file.replace("/image/upload/", "/raw/upload/")
-    : resource.file || resource.link;
+    : resource.file ;
+    // || resource.link;
 
   const isLink = resource.resource_type === "link";
     
@@ -54,7 +55,7 @@ function ResourceDetail() {
           {isLink ? (
             <a 
               className="open-file-btn"
-              href={resource.link}
+              href={fileUrl}
               target="_blank"
               rel="noreferrer"
           >
@@ -64,7 +65,7 @@ function ResourceDetail() {
             <>
               <a
                 className="open-file-btn"
-                href={fileUrl}
+                href={resource.link}
                 target="_blank"
                 rel="noreferrer"
               >
