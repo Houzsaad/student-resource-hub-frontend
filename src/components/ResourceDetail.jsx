@@ -3,9 +3,9 @@ import { href, useParams } from "react-router-dom";
 import { getResource } from "../api";
 import DownloadResource from "./DownloadResource";
 import Comments from "../components/Comments";
+import ShimmerCard from "./ShimmerCard";
 import "./ResourceDetail.css";
 
-import ShimmerCard from "./ShimmerCard";
 
 function ResourceDetail() {
   const { id } = useParams();
@@ -24,13 +24,22 @@ function ResourceDetail() {
   if (error) return <p>Error: {error}</p>;
   if (!resource) return <p>Resource not found</p>;
 
-  const isPDF = resource.file && resource.file.includes(".pdf");
-  const fileUrl = isPDF
-    ? resource.file.replace("/image/upload/", "/raw/upload/")
-    : resource.file ;
-    // || resource.link;
+  const isLink = resource.resource_type === "link"
+  const isPDF = resource.resource_type === "pdf"
 
-  const isLink = resource.resource_type === "link";
+
+  const fileUrl = resource.file
+    ? resource.file.replace("/image/upload/", "/raw/upload/")
+    : null;
+
+  // const isFile = resource.resource_type !== "link";
+  // const isPDF = resource.resource_type === "pdf";
+  // const isVideo = rtesouce.resource_type === "video";
+    
+  // const fileUr = resource.file
+  //   ? resource.file
+  //       .replace("/image/upload/", "/raw/upload/")
+  //   : null;
     
   return (
     <div className="resource-detail-page">
@@ -55,7 +64,7 @@ function ResourceDetail() {
           {isLink ? (
             <a 
               className="open-file-btn"
-              href={fileUrl}
+              href={resource.link}
               target="_blank"
               rel="noreferrer"
           >
@@ -65,7 +74,7 @@ function ResourceDetail() {
             <>
               <a
                 className="open-file-btn"
-                href={resource.link}
+                href={fileUrl}
                 target="_blank"
                 rel="noreferrer"
               >
