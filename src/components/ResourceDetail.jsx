@@ -27,19 +27,11 @@ function ResourceDetail() {
   const isLink = resource.resource_type === "link"
   const isPDF = resource.resource_type === "pdf"
 
-
   const fileUrl = resource.file
-    ? resource.file.replace("/image/upload/", "/raw/upload/")
+    ? isPDF 
+      ? resource.file.replace("/image/upload/", "/raw/upload/fl_inline/")
+      : resource.file.replace("/image/upload/", "/raw/upload")
     : null;
-
-  // const isFile = resource.resource_type !== "link";
-  // const isPDF = resource.resource_type === "pdf";
-  // const isVideo = rtesouce.resource_type === "video";
-    
-  // const fileUr = resource.file
-  //   ? resource.file
-  //       .replace("/image/upload/", "/raw/upload/")
-  //   : null;
     
   return (
     <div className="resource-detail-page">
