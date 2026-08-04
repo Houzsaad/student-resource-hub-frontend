@@ -28,9 +28,7 @@ function ResourceDetail() {
   const isPDF = resource.resource_type === "pdf"
 
   const fileUrl = resource.file
-    ? isPDF 
-      ? resource.file.replace("/image/upload/", "/raw/upload/fl_inline/")
-      : resource.file.replace("/image/upload/", "/raw/upload")
+    ? resource.file.replace("/image/upload/", "/raw/upload/fl_inline")
     : null;
     
   return (
