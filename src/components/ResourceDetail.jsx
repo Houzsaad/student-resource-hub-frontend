@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { href, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { getResource } from "../api";
 import DownloadResource from "./DownloadResource";
 import Comments from "../components/Comments";
