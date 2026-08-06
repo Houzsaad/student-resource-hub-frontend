@@ -26,6 +26,7 @@ function ResourceDetail() {
 
   const isLink = resource.resource_type === "link"
   const isPDF = resource.resource_type === "pdf"
+  const isImage = resource.resource_type === "image"
 
   const fileUrl = resource.file
     ? resource.file
