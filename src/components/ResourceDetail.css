@@ -77,3 +77,14 @@
   color: #1a1a1a;
   margin-bottom: 20px;
 }
+
+.delete-resource-btn {
+  padding: 9px 18px;
+  background-color: #f3f4f6;
+  color: #1a1a1a;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  transition: background-color 0.2s;
+}

@@ -1,10 +1,9 @@
 //const BASE = "http://127.0.0.1:8000/api";
 const BASE = import.meta.env.VITE_API_URL || "http://127.0.0.1:8000/api";
 
-
 function authHearders() {
-    const token = localStorage.getItem("access_token");
-    return { Authorization: "Bearer " + token};
+  const token = localStorage.getItem("access_token");
+  return token ? { Authorization: `Bearer ${token}` } : {};
 }
 
 export async function getResources(search = "") {
@@ -19,7 +18,12 @@ export async function getCategories() {
 }
 
 export async function getResource(id) {
-    const res = await fetch(`${BASE}/resources/resources/${id}`);
+    const res = await fetch(`${BASE}/resources/resources/${id}/`, {
+    headers: authHearders(),
+    });
+    if (!res.ok) {
+        throw new Error("Failed to fetch resoureces :)")
+    }
     return res.json();
 }
 
@@ -95,4 +99,14 @@ export async function createComment(resourceId, body) {
   return res.json();
 }
 
+export async function deleteResource(id) {
+  const res = await fetch(`${BASE}/resources/resources/${id}/`, {
+    method: "DELETE",
+    headers: authHearders(),
+  });
+  if (!res.ok) throw new Error("Failed to delete resource");
+}
+
+
 export default authHearders;
+

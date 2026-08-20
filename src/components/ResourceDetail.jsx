@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
-import { getResource } from "../api";
+import { useNavigate, useParams } from "react-router-dom";
+import { getResource, deleteResource } from "../api";
+
+import { useAuth } from "../context/AuthContext";
+
 import DownloadResource from "./DownloadResource";
 import Comments from "../components/Comments";
 import ShimmerCard from "./ShimmerCard";
@@ -9,9 +12,15 @@ import "./ResourceDetail.css";
 
 function ResourceDetail() {
   const { id } = useParams();
+
+  const { token } = useAuth();
+  const navigate = useNavigate()
+
   const [resource, setResource] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+
+  const [deleting, setDeleting] = useState(false);
 
   useEffect(() => {
     getResource(id)
@@ -24,6 +33,8 @@ function ResourceDetail() {
   if (error) return <p>Error: {error}</p>;
   if (!resource) return <p>Resource not found</p>;
 
+  console.log("RES..:", resource);
+
   const isLink = resource.resource_type === "link"
   const isPDF = resource.resource_type === "pdf"
   const isImage = resource.resource_type === "image"
@@ -32,6 +43,27 @@ function ResourceDetail() {
     ? resource.file
     : null;
     
+  const isOwner = resource.is_owner;
+
+
+    const handleDelete = async () => {
+      const confirmed = window.confirm(
+        "A y sure you wanna delete this resource?"
+      );
+
+      if (!confirmed) return ;
+      
+      try {
+        setDeleting(true);
+        await deleteResource(resource.id);
+
+        navigate("/resources");
+      } catch (err) {
+        setError(err.message);
+        setLoading(false)
+      }
+    }
+
   return (
     <div className="resource-detail-page">
       <div className="resource-detail-card">
@@ -78,6 +110,17 @@ function ResourceDetail() {
               initialCount={resource.download_count}
             />
           </>
+          )}
+  
+          {resource.is_owner && (
+            <button
+              className="delete-resource-btn"
+              onClick={handleDelete}
+              disabled={deleting}
+            >
+              {deleting ? "Deleting..." : "Delete Resource"}
+            </button>
+
           )}
         </div>
       </div>
