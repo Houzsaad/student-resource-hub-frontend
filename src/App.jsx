@@ -17,6 +17,8 @@ import DownloadResource from "./components/DownloadResource";
 import ShimmerCard from "./components/ShimmerCard";
 import EditResource from "./components/EditResource";
 
+import { AuthProvider, PrivateRoute } from "./context/AuthContext";
+
 function App(){
 
     return(
@@ -26,17 +28,16 @@ function App(){
                     <Route path="/resources" element={ <ResourceList />} />
                     <Route path="/register" element={ <RegisterForm />} />
                     <Route path="/login" element={ <LoginForm />} />
-                    <Route path="/upload" element={ <UploadForm />} />
-
-                    <Route path="/resources/:id" element={<ResourceDetail />} />
-                    
-                    <Route path="/Profile" element={<Profile />} />
+                    <Route path="/resources/:id" element={ <ResourceDetail /> } />
 
                     <Route path="/download" element={<DownloadResource />} />
-
                     <Route path="/shimmer" element={<ShimmerCard />} />
 
-                    <Route path="/resources/:id/edit" element={<EditResource />} />
+                    <Route path="/upload" element={ <PrivateRoute><UploadForm /></PrivateRoute> } />
+                    
+                    <Route path="/Profile" element={ <PrivateRoute><Profile /></PrivateRoute> } />
+
+                    <Route path="/resources/:id/edit" element={ <PrivateRoute><EditResource /></PrivateRoute> } />
 
                 </Routes>
         </Layout>
