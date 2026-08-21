@@ -78,6 +78,7 @@ function UploadForm() {
                 setError("");
               }}
             >
+              <option value="image">PDF</option>
               <option value="image">Image</option>
               <option value="video">Video</option>
               <option value="link">Link (URL)</option>

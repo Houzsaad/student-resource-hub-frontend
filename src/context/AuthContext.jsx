@@ -1,4 +1,5 @@
 import { createContext, useContext, useState } from "react";
+import { Navigate, Route } from "react-router-dom";
 
 const AuthContext = createContext(null);
 
@@ -24,6 +25,15 @@ export function AuthProvider({ children }) {
             {children}
         </AuthContext.Provider>
     );
+}
+
+export function PrivateRoute({ children }) {
+    const { isLoggedIn } = useAuth();
+
+    if (!isLoggedIn) {
+        return <Navigate to="/login" replace />;
+    }
+    return children;
 }
 
 export function useAuth(){

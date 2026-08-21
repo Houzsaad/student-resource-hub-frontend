@@ -15,6 +15,7 @@ import ResourceDetail from "./components/ResourceDetail";
 import Profile from "./components/Profile";
 import DownloadResource from "./components/DownloadResource";
 import ShimmerCard from "./components/ShimmerCard";
+import EditResource from "./components/EditResource";
 
 function App(){
 
@@ -34,6 +35,8 @@ function App(){
                     <Route path="/download" element={<DownloadResource />} />
 
                     <Route path="/shimmer" element={<ShimmerCard />} />
+
+                    <Route path="/resources/:id/edit" element={<EditResource />} />
 
                 </Routes>
         </Layout>

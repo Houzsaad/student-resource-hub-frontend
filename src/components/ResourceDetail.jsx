@@ -4,6 +4,8 @@ import { getResource, deleteResource } from "../api";
 
 import { useAuth } from "../context/AuthContext";
 
+import { Link } from "react-router-dom"; 
+
 import DownloadResource from "./DownloadResource";
 import Comments from "../components/Comments";
 import ShimmerCard from "./ShimmerCard";
@@ -45,6 +47,7 @@ function ResourceDetail() {
     
   const isOwner = resource.is_owner;
 
+  
 
     const handleDelete = async () => {
       const confirmed = window.confirm(
@@ -122,6 +125,25 @@ function ResourceDetail() {
             </button>
 
           )}
+
+         {isOwner && (
+          <>
+            <Link
+            className="edit-resource-btn"
+            to={`/resources/${resource.id}/edit`}
+          >
+             Edit
+         </Link>
+         
+            <button
+              className="delete-resource-btn"
+              onClick={handleDelete}
+              disabled={deleting}
+            >
+              {deleting ? "Deleting..." : "Delete"}
+            </button>
+        </>
+        )}
         </div>
       </div>
 

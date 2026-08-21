@@ -108,5 +108,17 @@ export async function deleteResource(id) {
 }
 
 
-export default authHearders;
+export async function editResource(id, edit) {
+  const res = await fetch(`${BASE}/resources/resources/${id}/`, {
+    method: "PATCH",
+    headers: {
+      ...authHearders(),
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(edit),
+  });
+  if (!res.ok) throw new Error("Failed to update resource");
+  return res.json();
+}
 
+export default authHearders;
