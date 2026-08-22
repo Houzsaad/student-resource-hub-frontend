@@ -2,6 +2,7 @@ import { useState } from "react";
 import { createRating } from "../api";
 import { useAuth } from "../context/AuthContext";
 import "./Rating.css";
+import { Link } from "react-router-dom";
 
 function Rating({ resourceId }) {
   const { isLoggedIn } = useAuth();
@@ -13,10 +14,12 @@ function Rating({ resourceId }) {
 
   if (!isLoggedIn) {
     return (
-      <div className="rating-section">
+    <div>
+      <p className="rating-section">
         <h3>Rating</h3>
-        <p>Login to rate this resource.</p>
-      </div>
+         <Link to="/login">Login</Link> to leave a rating
+      </p>
+    </div>
     );
   }
 

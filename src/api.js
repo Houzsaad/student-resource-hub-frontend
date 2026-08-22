@@ -140,10 +140,11 @@ export async function createRating(resourceId, score) {
 
   if (!res.ok) {
     throw new Error(
-      JSON.stringify(data)
-      // data.detail ||
-      // data.non_field_errors?.[0] ||
-      // "Failed to submit rating"
+      data.resource?.[0] ||
+      data.user?.[0] ||
+      data.non_field_errors?.[0] ||
+      data.detail ||
+      "Failed to submit rating"
     );
   }
 
