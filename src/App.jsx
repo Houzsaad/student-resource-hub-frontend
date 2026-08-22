@@ -16,6 +16,7 @@ import Profile from "./components/Profile";
 import DownloadResource from "./components/DownloadResource";
 import ShimmerCard from "./components/ShimmerCard";
 import EditResource from "./components/EditResource";
+import Rating from "./components/Rating";
 
 import { AuthProvider, PrivateRoute } from "./context/AuthContext";
 
@@ -38,6 +39,8 @@ function App(){
                     <Route path="/Profile" element={ <PrivateRoute><Profile /></PrivateRoute> } />
 
                     <Route path="/resources/:id/edit" element={ <PrivateRoute><EditResource /></PrivateRoute> } />
+
+                    <Route path="/Rating" element={ <PrivateRoute><Rating /></PrivateRoute> } />
 
                 </Routes>
         </Layout>

@@ -10,6 +10,7 @@ import DownloadResource from "./DownloadResource";
 import Comments from "../components/Comments";
 import ShimmerCard from "./ShimmerCard";
 import "./ResourceDetail.css";
+import Rating from "./Rating";
 
 
 function ResourceDetail() {
@@ -145,6 +146,10 @@ function ResourceDetail() {
         </>
         )}
         </div>
+      </div>
+
+      <div className="rating-section-wrapper">
+        <Rating resourceId={resource.id} />
       </div>
 
       <div className="comments-section">

@@ -121,4 +121,33 @@ export async function editResource(id, edit) {
   return res.json();
 }
 
+export async function createRating(resourceId, score) {
+  const res = await fetch(`${BASE}/interactions/ratings/`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      ...authHearders(),
+    },
+    body: JSON.stringify({
+      resource: resourceId,
+      score: score,
+    }),
+  });
+
+  const data = await res.json();
+  console.log("Rating status:", res.status);
+  console.log("Rating resp:", data);
+
+  if (!res.ok) {
+    throw new Error(
+      JSON.stringify(data)
+      // data.detail ||
+      // data.non_field_errors?.[0] ||
+      // "Failed to submit rating"
+    );
+  }
+
+  return data;
+}
+
 export default authHearders;

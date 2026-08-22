@@ -1,0 +1,44 @@
+.rating-section {
+  margin-top: 25px;
+  padding: 20px;
+  border: 1px solid #eee;
+  border-radius: 10px;
+  background: #fff;
+}
+
+.rating-section h3 {
+  margin-bottom: 12px;
+}
+
+.rating-buttons {
+  display: flex;
+  gap: 6px;
+}
+
+.rating-star {
+  border: none;
+  background: transparent;
+  font-size: 30px;
+  cursor: pointer;
+  color: #ccc;
+  padding: 2px;
+}
+
+.rating-star:hover,
+.rating-star.active {
+  color: #f5b301;
+}
+
+.rating-star:disabled {
+  cursor: not-allowed;
+}
+
+.rating-success {
+  margin-top: 10px;
+  color: green;
+}
+
+.rating-error {
+  margin-top: 10px;
+  color: red;
+}
