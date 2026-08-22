@@ -14,13 +14,13 @@ function Rating({ resourceId }) {
 
   if (!isLoggedIn) {
     return (
-    <div>
-      <p className="rating-section">
-        <h3>Rating</h3>
-         <Link to="/login">Login</Link> to leave a rating
-      </p>
-    </div>
-    );
+     <div>
+       <p className="rating-section">
+         <h3>Rating</h3>
+          <Link to="/login">Login</Link> to leave a rating
+       </p>
+     </div>
+     );
   }
 
   async function handleRating(value) {

@@ -36,8 +36,6 @@ function ResourceDetail() {
   if (error) return <p>Error: {error}</p>;
   if (!resource) return <p>Resource not found</p>;
 
-  console.log("RES..:", resource);
-
   const isLink = resource.resource_type === "link"
   const isPDF = resource.resource_type === "pdf"
   const isImage = resource.resource_type === "image"
@@ -136,13 +134,7 @@ function ResourceDetail() {
              Edit
          </Link>
          
-            <button
-              className="delete-resource-btn"
-              onClick={handleDelete}
-              disabled={deleting}
-            >
-              {deleting ? "Deleting..." : "Delete"}
-            </button>
+           
         </>
         )}
         </div>
