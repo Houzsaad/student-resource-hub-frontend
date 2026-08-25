@@ -151,4 +151,26 @@ export async function createRating(resourceId, score) {
   return data;
 }
 
+export async function submitResource(formData) {
+  const res = await fetch(`${BASE}/resources/submissions/`, {
+    method: "POST",
+    headers: authHearders(),
+    body: formData,
+  });
+
+  const data = await res.json().catch(() => ({}));
+
+  if (!res.ok) {
+    throw new Error(
+      data.detail ||
+      data.title?.[0] ||
+      data.file?.[0] ||
+      data.link?.[0] ||
+      "Failed to submit resource"
+    );
+  }
+
+  return data;
+}
+
 export default authHearders;
