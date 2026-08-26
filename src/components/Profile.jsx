@@ -3,6 +3,8 @@ import { getProfile } from "../api";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import "./Profile.css";
+import ShimmerCard from "./ShimmerCard";
+
 
 function Profile() {
   const [profile, setProfile] = useState(null);
@@ -22,10 +24,16 @@ function Profile() {
       .finally(() => setLoading(false));
   }, []);
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error}</p>;
-  if (!profile) return <p>Profile not found</p>;
-
+  
+      if (loading) return (
+      <div className="resource-list-page">
+          <div className="resource-grid">
+          {[1, 2, 3, 4, 5, 6].map(i => (
+              <ShimmerCard key={i} />
+          ))}
+          </div>
+      </div>
+      );
   // Get first letter of name for avatar
   const initial = profile.full_name?.charAt(0).toUpperCase() || "U";
 
