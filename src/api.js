@@ -173,4 +173,78 @@ export async function submitResource(formData) {
   return data;
 }
 
+export async function pendingSubmissions() {
+  const res = await fetch(`${BASE}/resources/submissions/pending/`, {
+    headers: authHearders(),
+  });
+
+  if (!res.ok) {
+    throw new Error("Failed to fetch pending submissions");
+  }
+
+  return res.json();
+}
+
+export async function approvalPermission() {
+  const res = await fetch(`${BASE}/resources/approval-permission/`, {
+    headers: authHearders(),
+  });
+
+  if (!res.ok) {
+    throw new Error("Failed to check permission");
+  }
+
+  return res.json();
+}
+
+export async function rejectSubmission(id) {
+  const res = await fetch(`${BASE}/resources/submissions/${id}/reject/`, {
+    method: "POST",
+    headers: authHearders(),
+  });
+
+  const data = await res.json();
+
+  if (!res.ok) {
+    throw new Error(data.error || "Failed to reject submission");
+  }
+
+  return data;
+}
+
+
+export async function approveSubmission(id) {
+  const res = await fetch(`${BASE}/resources/submissions/${id}/approve/`, {
+    method: "POST",
+    headers: authHearders(),
+  });
+
+  const data = await res.json();
+
+  if (!res.ok) {
+    throw new Error(data.error || "Failed to approve submission");
+  }
+
+  return data;
+}
+
+export async function canApproveResources() {
+  const res = await fetch(`${BASE}/resources/approval-permission/`, {
+    headers: authHearders(),
+  });
+
+  console.log("Permission status:", res.status);
+  console.log("Permission headers:", authHearders());
+  const data = await res.json().catch(() => ({}));
+  //console.log("Permission data:", data);
+
+  if (!res.ok) {
+    return false;
+  }
+
+  //const data = await res.json();
+
+  return data.can_approve_resource === true;
+}
+
 export default authHearders;
