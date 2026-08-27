@@ -18,6 +18,9 @@ import ShimmerCard from "./components/ShimmerCard";
 import EditResource from "./components/EditResource";
 import Rating from "./components/Rating";
 
+import PendingSubmissions from "./components/PendingSubmissions";
+
+
 import { AuthProvider, PrivateRoute } from "./context/AuthContext";
 
 function App(){
@@ -41,6 +44,11 @@ function App(){
                     <Route path="/resources/:id/edit" element={ <PrivateRoute><EditResource /></PrivateRoute> } />
 
                     <Route path="/Rating" element={ <PrivateRoute><Rating /></PrivateRoute> } />
+
+        
+                    <Route path="/submissions/pending" element={<PrivateRoute> <PendingSubmissions /> </PrivateRoute>}/>
+                    
+                    {/* path("approval-permission/", ResourceApprovalPermissionView.as_view(), name="resource-approval-permission"), */}
 
                 </Routes>
         </Layout>

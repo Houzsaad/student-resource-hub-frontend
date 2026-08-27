@@ -1,7 +1,9 @@
-import { getCategories, uploadResource } from "../api";
+//import { getCategories, uploadResource } from "../api";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import "./UploadForm.css";
+
+import { getCategories, submitResource } from "../api";
 
 function UploadForm() {
   const navigate = useNavigate();
@@ -43,10 +45,10 @@ function UploadForm() {
     setLoading(true);
     setError("");
 
-    const data = await uploadResource(formData);
+    const data = await submitResource(formData);
 
     if (data.id) {
-      setSuccess("Resource uploaded successfully");
+      setSuccess("Resource submitted successfully. It will be approved soon...");
       setTimeout(() => navigate("/resources/"), 1500);
     } else {
       setError("Oops! Upload failed");
@@ -78,7 +80,7 @@ function UploadForm() {
                 setError("");
               }}
             >
-              <option value="image">PDF</option>
+              <option value="pdf">PDF</option>
               <option value="image">Image</option>
               <option value="video">Video</option>
               <option value="link">Link (URL)</option>
@@ -128,7 +130,7 @@ function UploadForm() {
             </div>
           ) : (
             <div className="upload-form-group">
-              <label>
+              {/* <label>
                 {resourceType === "pdf" ? "PDF File" : "Video File"}
               </label>
               <input
@@ -136,7 +138,27 @@ function UploadForm() {
                 type="file"
                 accept={resourceType === "pdf" ? ".pdf" : "video/*"}
                 onChange={e => setFile(e.target.files[0])}
-              />
+              /> */}
+              <label>
+                {resourceType === "pdf"
+                  ? "PDF File"
+                  : resourceType === "image"
+                  ? "Image File"
+                  : "Video File"}
+              </label>
+
+              <input
+                className="upload-file-input"
+                type="file"
+                accept={
+                  resourceType === "pdf"
+                  ? ".pdf"
+                  : resourceType === "image"
+                  ? "image/*"
+                  : "video/*"
+              }
+                onChange={e => setFile(e.target.files[0])}
+            />
             </div>
           )}
 
