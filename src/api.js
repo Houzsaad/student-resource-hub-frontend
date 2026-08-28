@@ -151,4 +151,19 @@ export async function createRating(resourceId, score) {
   return data;
 }
 
+export async function getMyResources() {
+  const res = await fetch(
+    `${BASE}/resources/resources/my-resources/`,
+    {
+      headers: authHearders(),
+    }
+  );
+
+  if (!res.ok) {
+    throw new Error("Failed to fetch your resources");
+  }
+
+  return res.json();
+}
+
 export default authHearders;
