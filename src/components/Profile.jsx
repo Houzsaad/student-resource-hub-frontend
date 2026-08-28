@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import ResourceCard from "./ResourceCard";
 import "./Profile.css";
+import ShimmerCard from "./ShimmerCard";
+
 
 function Profile() {
   const [profile, setProfile] = useState(null);
@@ -40,11 +42,20 @@ function Profile() {
 
     loadProfile();
   }, [isLoggedIn, navigate]);
-
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error}</p>;
   if (!profile) return <p>Profile not found</p>;
 
+      if (loading) return (
+      <div className="resource-list-page">
+          <div className="resource-grid">
+          {[1, 2, 3, 4, 5, 6].map(i => (
+              <ShimmerCard key={i} />
+          ))}
+          </div>
+      </div>
+      ); 
+      
   const initial = profile.full_name?.charAt(0).toUpperCase() || "U";
 
   const joined = new Date(profile.date_joined).toLocaleDateString("en-GB", {
