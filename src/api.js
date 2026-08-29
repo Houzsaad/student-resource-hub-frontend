@@ -291,7 +291,7 @@ export async function createRating(resourceId, score) {
   return data;
 }
 
-<<<<<<< HEAD
+
 export async function getMyResources() {
   const res = await fetch(
     `${BASE}/resources/resources/my-resources/`,
@@ -302,7 +302,11 @@ export async function getMyResources() {
 
   if (!res.ok) {
     throw new Error("Failed to fetch your resources");
-=======
+  }
+
+  return res.json();
+}
+
 
 export async function submitResource(formData) {
   const res = await authFetch(
@@ -336,15 +340,11 @@ export async function pendingSubmissions() {
 
   if (!res.ok) {
     throw new Error("Failed to fetch pending submissions");
->>>>>>> 08b09e529cee3fa704cc249f0838a5454d9c5305
   }
 
   return res.json();
 }
 
-<<<<<<< HEAD
-export default authHearders;
-=======
 
 export async function approvalPermission() {
   const res = await authFetch(
@@ -418,4 +418,3 @@ export async function canApproveResources() {
 }
 
 export default authHearders;
->>>>>>> 08b09e529cee3fa704cc249f0838a5454d9c5305

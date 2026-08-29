@@ -67,7 +67,6 @@ function Profile() {
   return (
     <div className="profile-page">
 
-      {/* Profile information */}
       <div className="profile-card">
 
         <div className="profile-avatar">{initial}</div>
@@ -93,7 +92,6 @@ function Profile() {
         </div>
       </div>
 
-      {/* My Resources */}
       <div className="my-resources">
         <h2>My Resources</h2>
 
