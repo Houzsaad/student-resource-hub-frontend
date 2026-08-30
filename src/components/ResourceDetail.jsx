@@ -103,7 +103,7 @@ function ResourceDetail() {
                 target="_blank"
                 rel="noreferrer"
               >
-                {isPDF ?  "Open Image" : "Open Video"}
+                {isPDF ?  "Open Image" : "Open Image"}
               </a>
 
               <DownloadResource

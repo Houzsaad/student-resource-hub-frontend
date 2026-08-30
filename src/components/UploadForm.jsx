@@ -1,4 +1,3 @@
-//import { getCategories, uploadResource } from "../api";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import "./UploadForm.css";
@@ -27,10 +26,17 @@ function UploadForm() {
 
     if (!title) return setError("Title is required");
     if (!categoryId) return setError("Please select a category");
-    if (resourceType === "link" && !link) return setError("Please enter a URL");
-    if (resourceType !== "link" && !file) return setError("Please select a file");
+
+    if (resourceType === "link" && !link) {
+      return setError("Please enter a URL");
+    }
+
+    if (resourceType !== "link" && !file) {
+      return setError("Please select a file");
+    }
 
     const formData = new FormData();
+
     formData.append("title", title);
     formData.append("description", description);
     formData.append("category", categoryId);
@@ -45,13 +51,21 @@ function UploadForm() {
     setLoading(true);
     setError("");
 
-    const data = await submitResource(formData);
+    try {
+      const data = await submitResource(formData);
 
-    if (data.id) {
-      setSuccess("Resource submitted successfully. It will be approved soon...");
-      setTimeout(() => navigate("/resources/"), 1500);
-    } else {
-      setError("Oops! Upload failed");
+      if (data.id) {
+        setSuccess(
+          "Resource submitted successfully. It will be reviewed soon..."
+        );
+
+        setTimeout(() => navigate("/resources/"), 1500);
+      } else {
+        setError("Oops! Upload failed");
+        setLoading(false);
+      }
+    } catch (err) {
+      setError(err.message || "Upload failed");
       setLoading(false);
     }
   }
@@ -59,18 +73,26 @@ function UploadForm() {
   return (
     <div className="upload-page">
       <div className="upload-card">
-        <h2>Upload Resource</h2>
+
+        <h2>Submit Resource</h2>
+
         <p className="upload-subtitle">
-          Share your notes, PDFs, videos or links with others
+          Share academic resources with other students
         </p>
 
-        {success && <p className="upload-success">{success}</p>}
-        {error && <p className="upload-error">{error}</p>}
+        {success && (
+          <p className="upload-success">{success}</p>
+        )}
+
+        {error && (
+          <p className="upload-error">{error}</p>
+        )}
 
         <form onSubmit={handleSubmit}>
 
           <div className="upload-form-group">
             <label>Resource Type</label>
+
             <select
               value={resourceType}
               onChange={e => {
@@ -82,15 +104,15 @@ function UploadForm() {
             >
               <option value="pdf">PDF</option>
               <option value="image">Image</option>
-              <option value="video">Video</option>
               <option value="link">Link (URL)</option>
             </select>
           </div>
 
           <div className="upload-form-group">
             <label>Title</label>
+
             <textarea
-              placeholder="Write the resource title"
+              placeholder="Example: COS202, 2024/25 Second Semester Past Questions"
               value={title}
               onChange={e => setTitle(e.target.value)}
             />
@@ -98,29 +120,41 @@ function UploadForm() {
 
           <div className="upload-form-group">
             <label>Description</label>
+
             <textarea
               value={description}
               onChange={e => setDescription(e.target.value)}
-              placeholder="Write a short description"
+              placeholder="Briefly describe this resource"
             />
           </div>
 
           <div className="upload-form-group">
             <label>Category</label>
+
             <select
               value={categoryId}
               onChange={e => setCategoryId(e.target.value)}
             >
-              <option value="">Select a category</option>
+              <option value="">
+                Select a category
+              </option>
+
               {categories.map(cat => (
-                <option key={cat.id} value={cat.id}>{cat.name}</option>
+                <option
+                  key={cat.id}
+                  value={cat.id}
+                >
+                  {cat.name}
+                </option>
               ))}
             </select>
           </div>
 
           {resourceType === "link" ? (
+
             <div className="upload-form-group">
-              <label>URL</label>
+              <label>Resource URL</label>
+
               <input
                 type="url"
                 value={link}
@@ -128,23 +162,15 @@ function UploadForm() {
                 placeholder="https://..."
               />
             </div>
+
           ) : (
+
             <div className="upload-form-group">
-              {/* <label>
-                {resourceType === "pdf" ? "PDF File" : "Video File"}
-              </label>
-              <input
-                className="upload-file-input"
-                type="file"
-                accept={resourceType === "pdf" ? ".pdf" : "video/*"}
-                onChange={e => setFile(e.target.files[0])}
-              /> */}
+
               <label>
                 {resourceType === "pdf"
                   ? "PDF File"
-                  : resourceType === "image"
-                  ? "Image File"
-                  : "Video File"}
+                  : "Image File"}
               </label>
 
               <input
@@ -152,14 +178,16 @@ function UploadForm() {
                 type="file"
                 accept={
                   resourceType === "pdf"
-                  ? ".pdf"
-                  : resourceType === "image"
-                  ? "image/*"
-                  : "video/*"
-              }
-                onChange={e => setFile(e.target.files[0])}
-            />
+                    ? ".pdf"
+                    : "image/*"
+                }
+                onChange={e =>
+                  setFile(e.target.files[0])
+                }
+              />
+
             </div>
+
           )}
 
           <button
@@ -167,10 +195,13 @@ function UploadForm() {
             className="upload-btn"
             disabled={loading}
           >
-            {loading ? "Uploading..." : "Upload"}
+            {loading
+              ? "Submitting..."
+              : "Submit Resource"}
           </button>
 
         </form>
+
       </div>
     </div>
   );

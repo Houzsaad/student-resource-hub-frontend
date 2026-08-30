@@ -42,9 +42,6 @@ function Profile() {
 
     loadProfile();
   }, [isLoggedIn, navigate]);
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error}</p>;
-  if (!profile) return <p>Profile not found</p>;
 
       if (loading) return (
       <div className="resource-list-page">
