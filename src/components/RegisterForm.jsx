@@ -10,16 +10,33 @@ const academicData = {
     "Mathematics",
     "Physics",
     "Chemistry",
+    "Biology",
+    "Bio Chemist"
   ],
 
   "Faculty of Computing": [
     "Computer Science",
     "Information Technology",
+    "Cyber Security"
   ],
 
   "Faculty of Education": [
-    "Education",
+    "Edu Biology",
+    "Edu Mathmatics",
+    "Edu Chemistry",
+    "Edu Hausa",
+    "Edu Physics",
+    "Edu History",
+    "Edu English",
+    "Edu Computer"
   ],
+
+  
+ "Faculty Of Agriculture": [
+    "Animal Science",
+    "Crops Science",
+    "Farm Science"
+  ]
 };
 
 
