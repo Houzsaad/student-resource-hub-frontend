@@ -74,6 +74,26 @@ function Profile() {
 
         <div className="profile-divider" />
 
+        
+        <div className="profile-info">
+          <div className="profile-info-item">
+            <span className="profile-info-label">Faculty</span>
+            <span className="profile-info-value">
+              {profile.faculty || "Not set"}
+            </span>
+          </div>
+        </div>
+
+        
+        <div className="profile-info">
+          <div className="profile-info-item">
+            <span className="profile-info-label">Department</span>
+            <span className="profile-info-value">
+              {profile.department || "Not set"}
+            </span>
+          </div>
+        </div>
+
         <div className="profile-info">
           <div className="profile-info-item">
             <span className="profile-info-label">Level</span>
