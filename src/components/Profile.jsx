@@ -29,7 +29,7 @@ function Profile() {
           getProfile(),
           getMyResources(),
         ]);
-
+        console.log("PROFILE DATA:", profileData);
         setProfile(profileData);
         setResources(resourcesData.results || resourcesData);
       } catch (err) {
