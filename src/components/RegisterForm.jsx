@@ -11,32 +11,31 @@ const academicData = {
     "Physics",
     "Chemistry",
     "Biology",
-    "Bio Chemist"
+    "Bio Chemistry",
   ],
 
   "Faculty of Computing": [
     "Computer Science",
     "Information Technology",
-    "Cyber Security"
+    "Cyber Security",
   ],
 
   "Faculty of Education": [
-    "Edu Biology",
-    "Edu Mathmatics",
-    "Edu Chemistry",
-    "Edu Hausa",
-    "Edu Physics",
-    "Edu History",
-    "Edu English",
-    "Edu Computer"
+    "Education Biology",
+    "Education Mathematics",
+    "Education Chemistry",
+    "Education Hausa",
+    "Education Physics",
+    "Education History",
+    "Education English",
+    "Education Computer",
   ],
 
-  
- "Faculty Of Agriculture": [
+  "Faculty of Agriculture": [
     "Animal Science",
-    "Crops Science",
-    "Farm Science"
-  ]
+    "Crop Science",
+    "Farm Science",
+  ],
 };
 
 
@@ -61,19 +60,25 @@ function RegisterForm() {
 
     const { name, value } = e.target;
 
-    setForm({
-      ...form,
-      [name]: value,
-    });
-
     if (name === "faculty") {
 
-      setForm({
-        ...form,
+      setForm((previousForm) => ({
+        ...previousForm,
         faculty: value,
         department: "",
-      });
+      }));
+
+      setError("");
+
+      return;
     }
+
+    setForm((previousForm) => ({
+      ...previousForm,
+      [name]: value,
+    }));
+
+    setError("");
   }
 
 
@@ -83,25 +88,32 @@ function RegisterForm() {
 
     setError("");
 
+
     if (!form.faculty) {
-      return setError("Please select your faculty");
+      setError("Please select your faculty");
+      return;
     }
 
     if (!form.department) {
-      return setError("Please select your department");
+      setError("Please select your department");
+      return;
     }
 
-    if (!form.fullName) {
-      return setError("Full name is required");
+    if (!form.fullName.trim()) {
+      setError("Full name is required");
+      return;
     }
 
-    if (!form.email) {
-      return setError("Email is required");
+    if (!form.email.trim()) {
+      setError("Email is required");
+      return;
     }
 
     if (!form.password) {
-      return setError("Password is required");
+      setError("Password is required");
+      return;
     }
+
 
     setLoading(true);
 
@@ -127,31 +139,36 @@ function RegisterForm() {
 
         navigate("/login");
 
-      } else {
-
-        setError(
-          data.email?.[0] ||
-          data.password?.[0] ||
-          data.detail ||
-          "Registration failed!"
-        );
-
-        setLoading(false);
+        return;
       }
+
+
+      setError(
+        data.email?.[0] ||
+        data.password?.[0] ||
+        data.full_name?.[0] ||
+        data.faculty?.[0] ||
+        data.department?.[0] ||
+        data.detail ||
+        "Registration failed!"
+      );
+
+      setLoading(false);
 
     } catch (error) {
 
-      setError("Something went wrong. Please try again.");
+      setError(
+        "Something went wrong. Please try again."
+      );
 
       setLoading(false);
     }
   }
 
 
-  const departments =
-    form.faculty
-      ? academicData[form.faculty] || []
-      : [];
+  const departments = form.faculty
+    ? academicData[form.faculty] || []
+    : [];
 
 
   return (
@@ -194,14 +211,12 @@ function RegisterForm() {
 
               {Object.keys(academicData).map(
                 (faculty) => (
-
                   <option
                     key={faculty}
                     value={faculty}
                   >
                     {faculty}
                   </option>
-
                 )
               )}
 
@@ -224,19 +239,19 @@ function RegisterForm() {
             >
 
               <option value="">
-                Select Department
+                {form.faculty
+                  ? "Select Department"
+                  : "Select Faculty First"}
               </option>
 
               {departments.map(
                 (department) => (
-
                   <option
                     key={department}
                     value={department}
                   >
                     {department}
                   </option>
-
                 )
               )}
 
@@ -294,6 +309,8 @@ function RegisterForm() {
 
           </div>
 
+
+          {/* Register */}
 
           <button
             type="submit"
