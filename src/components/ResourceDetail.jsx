@@ -41,7 +41,9 @@ function ResourceDetail() {
   const isImage = resource.resource_type === "image"
 
   const fileUrl = resource.file
-    ? resource.file
+    ? isPDF
+      ? resource.file.replace('/upload/', '/upload/fl_attachment:false/')
+      : resource.file
     : null;
     
   const isOwner = resource.is_owner;
