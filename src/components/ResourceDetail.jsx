@@ -109,7 +109,7 @@ function ResourceDetail() {
               <DownloadResource
               id={resource.id}
               filename={resource.title}
-              initialCount={resource.download_count}
+              initialCounter={resource.download_count}
             />
           </>
           )}
