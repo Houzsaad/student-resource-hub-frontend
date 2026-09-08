@@ -35,15 +35,13 @@ function ResourceDetail() {
   if (loading) return <ShimmerCard />;
   if (error) return <p>Error: {error}</p>;
   if (!resource) return <p>Resource not found</p>;
-
+ 
   const isLink = resource.resource_type === "link"
   const isPDF = resource.resource_type === "pdf"
   const isImage = resource.resource_type === "image"
 
   const fileUrl = resource.file
-    ? isPDF
-      ? resource.file.replace('/upload/', '/upload/fl_attachment:false/')
-      : resource.file
+    ? resource.file
     : null;
     
   const isOwner = resource.is_owner;
