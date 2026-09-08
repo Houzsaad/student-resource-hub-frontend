@@ -1,6 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import { registerUser } from "../api";
 import { useState } from "react";
+import { Eye, EyeOff } from "lucide-react";
 
 import "./RegisterForm.css";
 
@@ -42,6 +43,8 @@ const academicData = {
 function RegisterForm() {
 
   const navigate = useNavigate();
+
+  const [showPassword, setShowPassword] = useState(false);
 
   const [form, setForm] = useState({
     faculty: "",
@@ -299,13 +302,23 @@ function RegisterForm() {
 
             <p>Password</p>
 
-            <input
-              name="password"
-              type="password"
-              value={form.password}
-              onChange={handleChange}
-              placeholder="Password"
-            />
+            <div className="password-input-wrapper">
+              <input
+                name="password"
+                type={showPassword ? "text" : "password"}
+                value={form.password}
+                onChange={handleChange}
+                placeholder="Password"
+              />
+              <button
+                type="button"
+                className="toggle-password-btn"
+                onClick={() => setShowPassword(!showPassword)}
+                aria-label={showPassword ? "Hide password" : "Show password"}
+              >
+                {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+              </button>
+            </div>
 
           </div>
 
