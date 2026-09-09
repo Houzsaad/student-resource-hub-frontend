@@ -3,7 +3,6 @@ import { useAuth } from "../context/AuthContext";
 import { Link, useLocation } from "react-router-dom";
 import { canApproveResources } from "../api";
 import { Home, Search, Upload, User, LogOut } from "lucide-react";
-import { Inbox } from "lucide-react";
 import "./Navbar.css";
 
 function Navbar() {
@@ -42,11 +41,11 @@ function Navbar() {
         <div className="navbar-top-links">
           {isLoggedIn ? (
             <>
-            {canApprove && (
-              <Link to="/submissions/pending" className="navbar-pending-link" aria-label="Pending Submissions">
-                <Inbox size={20} />
-              </Link>
-            )}
+              {canApprove && (
+                <Link to="/submissions/pending" className="navbar-pending-link">
+                  Pending Submissions
+                </Link>
+              )}
               <button className="navbar-btn" onClick={logout}>
                 Logout
               </button>
