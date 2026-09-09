@@ -1,18 +1,8 @@
-nav {
-    display: flex;
-    justify-content: space-between;
-    padding: 16px;
-}
-nav a {
-    margin-right: 16px;
-    text-decoration: none;
-}
-
-.navbar {
+.navbar-top {
   background-color: #ffffff;
   border-bottom: 1px solid #e5e7eb;
   padding: 0 24px;
-  height: 64px;
+  height: 56px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -22,39 +12,88 @@ nav a {
 }
 
 .navbar-logo {
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 700;
   color: #1a1a1a;
   letter-spacing: -0.5px;
   white-space: nowrap;
+  text-decoration: none;
 }
 
-.navbar-links {
+.navbar-top-links {
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: 16px;
 }
 
-.navbar-links a {
+.navbar-top-links a {
   font-size: 14px;
   color: #55575c;
+  text-decoration: none;
   transition: color 0.2s;
 }
 
-.navbar-links a:hover {
-  color: #3c2121;
+.navbar-top-links a:hover {
+  color: #1a1a1a;
+}
+
+.navbar-pending-link {
+  font-weight: 600;
 }
 
 .navbar-btn {
   background-color: #1a1a1a;
   color: #ffffff;
   border: none;
-  padding: 8px 18px;
+  padding: 8px 16px;
   border-radius: 6px;
   font-size: 14px;
+  cursor: pointer;
   transition: background-color 0.2s;
 }
 
 .navbar-btn:hover {
   background-color: #374151;
+}
+
+.navbar-bottom {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #ffffff;
+  border-top: 1px solid #e5e7eb;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 60px;
+  z-index: 100;
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.bottom-nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  color: #6b7280;
+  text-decoration: none;
+  font-size: 11px;
+  flex: 1;
+  padding: 6px 0;
+  transition: color 0.2s;
+}
+
+.bottom-nav-item.active {
+  color: #1a1a1a;
+  font-weight: 600;
+}
+
+.bottom-nav-item:hover {
+  color: #1a1a1a;
+}
+
+body {
+  padding-bottom: 60px;
 }

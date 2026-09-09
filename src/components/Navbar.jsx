@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
 import { useAuth } from "../context/AuthContext";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { canApproveResources } from "../api";
+import { Home, Search, Upload, User, LogOut } from "lucide-react";
 import "./Navbar.css";
 
 function Navbar() {
   const { isLoggedIn, logout } = useAuth();
   const [canApprove, setCanApprove] = useState(false);
+  const location = useLocation();
 
   useEffect(() => {
     async function checkPermission() {
@@ -17,7 +19,6 @@ function Navbar() {
 
       try {
         const allowed = await canApproveResources();
-        console.log("allowed:", allowed)
         setCanApprove(allowed);
       } catch (error) {
         console.error("Permission check failed:", error);
@@ -28,42 +29,67 @@ function Navbar() {
     checkPermission();
   }, [isLoggedIn]);
 
-  return (
-    <nav className="navbar">
-      <Link to="/resources" className="navbar-logo">
-        Student Resource Hub
-      </Link>
+  const isActive = (path) => location.pathname === path;
 
-      <div className="navbar-links">
-        <Link to="/resources">Home</Link>
+  return (
+    <>
+      <nav className="navbar-top">
+        <Link to="/resources" className="navbar-logo">
+          Student Resource Hub
+        </Link>
+
+        <div className="navbar-top-links">
+          {isLoggedIn ? (
+            <>
+              {canApprove && (
+                <Link to="/submissions/pending" className="navbar-pending-link">
+                  Pending Submissions
+                </Link>
+              )}
+              <button className="navbar-btn" onClick={logout}>
+                Logout
+              </button>
+            </>
+          ) : (
+            <>
+              <Link to="/login">Login</Link>
+              <Link to="/register">Register</Link>
+            </>
+          )}
+        </div>
+      </nav>
+
+      <nav className="navbar-bottom">
+        <Link to="/resources" className={`bottom-nav-item ${isActive("/resources") ? "active" : ""}`}>
+          <Home size={22} />
+          <span>Home</span>
+        </Link>
+
+        <Link to="/resources?focus=search" className="bottom-nav-item">
+          <Search size={22} />
+          <span>Search</span>
+        </Link>
+
+        {isLoggedIn && (
+          <Link to="/upload" className={`bottom-nav-item ${isActive("/upload") ? "active" : ""}`}>
+            <Upload size={22} />
+            <span>Upload</span>
+          </Link>
+        )}
 
         {isLoggedIn ? (
-          <>
-            <Link to="/upload">Upload</Link>
-
-            {canApprove && (
-              <Link to="/submissions/pending">
-                Pending Submissions
-              </Link>
-            )}
-
-            <Link to="/profile">Profile</Link>
-
-            <button
-              className="navbar-btn"
-              onClick={logout}
-            >
-              Logout
-            </button>
-          </>
+          <Link to="/profile" className={`bottom-nav-item ${isActive("/profile") ? "active" : ""}`}>
+            <User size={22} />
+            <span>Profile</span>
+          </Link>
         ) : (
-          <>
-            <Link to="/login">Login</Link>
-            <Link to="/register">Register</Link>
-          </>
+          <Link to="/login" className="bottom-nav-item">
+            <User size={22} />
+            <span>Login</span>
+          </Link>
         )}
-      </div>
-    </nav>
+      </nav>
+    </>
   );
 }
 

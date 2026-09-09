@@ -1,16 +1,19 @@
 import { getResources } from "../api";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import ResourceCard from "./ResourceCard";
-
 import "./ResourceList.css";
-
 import ShimmerCard from "./ShimmerCard";
+
+import { useSearchParams } from "react-router-dom";
+
 
 function ResourceList (){
     const [resources, setResources] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [search, setSearch] = useState("");
+    const [searchParams] = useSearchParams();
+    const searchInputRef = useRef(null);
 
     useEffect(() =>{
         console.log("Search value:", search);
@@ -23,6 +26,13 @@ function ResourceList (){
             .catch(err =>  setError(err.message))
             .finally(() => setLoading(false));
     }, [search]);
+
+    useEffect(() => {
+        if (searchParams.get("focus") === "search" && searchInputRef.current) {
+            searchInputRef.current.scrollIntoView({ behavior: "smooth", block: "center" });
+            searchInputRef.current.focus();
+        }
+    }, [searchParams]);
 
 
     if (loading) return (
@@ -41,6 +51,7 @@ function ResourceList (){
     return (
         <div className="resource-list-page">
             <input 
+                ref={searchInputRef}
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 placeholder="search resources..."
