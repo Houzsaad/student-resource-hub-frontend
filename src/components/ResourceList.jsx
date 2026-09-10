@@ -52,6 +52,7 @@ function ResourceList (){
         <div className="resource-list-page">
             <input 
                 ref={searchInputRef}
+                className="search-bar"
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 placeholder="search resources..."

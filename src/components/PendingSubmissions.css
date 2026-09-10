@@ -7,11 +7,12 @@
 .pending-submissions h2 {
   margin-bottom: 25px;
   font-size: 1.8rem;
+  color: var(--text-primary);
 }
 
 .submission-card {
-  background: #ffffff;
-  border: 1px solid #e5e7eb;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
   border-radius: 12px;
   padding: 24px;
   margin-bottom: 20px;
@@ -21,18 +22,19 @@
 .submission-card h3 {
   margin: 0 0 10px;
   font-size: 1.3rem;
+  color: var(--text-primary);
 }
 
 .submission-card > p {
   line-height: 1.6;
-  color: #555;
+  color: var(--text-secondary);
   margin-bottom: 20px;
 }
 
 .submission-preview {
   margin: 20px 0;
   padding: 15px;
-  background: #f8fafc;
+  background: var(--bg-secondary);
   border-radius: 10px;
   overflow: hidden;
 }
@@ -55,13 +57,14 @@
 .submission-preview iframe {
   border: none;
   border-radius: 8px;
-  background: white;
+  background: var(--bg-primary);
 }
 
 .submission-preview a {
   display: inline-block;
   text-decoration: none;
   font-weight: 600;
+  color: var(--accent);
 }
 
 .submission-actions {

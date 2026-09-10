@@ -1,13 +1,13 @@
 .rating-section {
   margin-top: 25px;
   padding: 20px;
-  border: 1px solid #eee;
+  border: 1px solid var(--border-color);
   border-radius: 10px;
-  background: #fff;
+  background: var(--bg-primary);
 }
 
 .rating-section a {
-  color: #3b82f6;
+  color: var(--accent);
   font-weight: 600;
 }
 
@@ -21,7 +21,7 @@
   background: transparent;
   font-size: 30px;
   cursor: pointer;
-  color: #ccc;
+  color: var(--border-color);
   padding: 2px;
 }
 

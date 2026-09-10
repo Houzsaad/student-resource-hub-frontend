@@ -5,6 +5,20 @@ import { canApproveResources } from "../api";
 import { Home, Search, Upload, User, LogOut } from "lucide-react";
 import "./Navbar.css";
 
+import { useTheme } from "../context/ThemeContext";
+
+function ThemeToggle() {
+  const { theme, setTheme } = useTheme();
+
+  return (
+    <select value={theme} onChange={(e) => setTheme(e.target.value)}>
+      <option value="light">Light</option>
+      <option value="dark">Dark</option>
+      <option value="system">System</option>
+    </select>
+  );
+}
+
 function Navbar() {
   const { isLoggedIn, logout } = useAuth();
   const [canApprove, setCanApprove] = useState(false);

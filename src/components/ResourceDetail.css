@@ -5,8 +5,8 @@
 }
 
 .resource-detail-card {
-  background-color: #ffffff;
-  border: 1px solid #e5e7eb;
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-color);
   border-radius: 12px;
   padding: 32px;
   margin-bottom: 32px;
@@ -15,13 +15,13 @@
 .resource-detail-title {
   font-size: 22px;
   font-weight: 700;
-  color: #1a1a1a;
+  color: var(--text-primary);
   margin-bottom: 12px;
 }
 
 .resource-detail-description {
   font-size: 14px;
-  color: #6b7280;
+  color: var(--text-secondary);
   line-height: 1.7;
   margin-bottom: 20px;
 }
@@ -35,11 +35,11 @@
 
 .resource-meta-item {
   font-size: 13px;
-  color: #9ca3af;
+  color: var(--text-secondary);
 }
 
 .resource-meta-item span {
-  color: #374151;
+  color: var(--text-primary);
   font-weight: 600;
 }
 
@@ -51,9 +51,9 @@
 
 .open-file-btn {
   padding: 9px 18px;
-  background-color: #f3f4f6;
-  color: #1a1a1a;
-  border: 1px solid #e5e7eb;
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
   border-radius: 8px;
   font-size: 13px;
   font-weight: 600;
@@ -61,12 +61,12 @@
 }
 
 .open-file-btn:hover {
-  background-color: #e5e7eb;
+  background-color: var(--border-color);
 }
 
 .comments-section {
-  background-color: #ffffff;
-  border: 1px solid #e5e7eb;
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-color);
   border-radius: 12px;
   padding: 28px;
 }
@@ -74,15 +74,15 @@
 .comments-title {
   font-size: 16px;
   font-weight: 700;
-  color: #1a1a1a;
+  color: var(--text-primary);
   margin-bottom: 20px;
 }
 
 .delete-resource-btn {
   padding: 9px 18px;
-  background-color: #f3f4f6;
-  color: #1a1a1a;
-  border: 1px solid #e5e7eb;
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
   border-radius: 8px;
   font-size: 13px;
   font-weight: 600;
@@ -92,9 +92,9 @@
 
 .edit-resource-btn {
   padding: 9px 18px;
-  background-color: #f3f4f6;
-  color: #1a1a1a;
-  border: 1px solid #e5e7eb;
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  border: 1px solid var(--border-color);
   border-radius: 8px;
   font-size: 13px;
   font-weight: 600;

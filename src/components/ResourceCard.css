@@ -1,6 +1,6 @@
 .card {
-  background-color: #ffffff;
-  border: 1px solid #e5e7eb;
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-color);
   border-radius: 12px;
   padding: 20px 24px;
   transition: box-shadow 0.2s;
@@ -13,13 +13,13 @@
 .card-title {
   font-size: 16px;
   font-weight: 600;
-  color: #1a1a1a;
+  color: var(--text-primary);
   margin-bottom: 8px;
 }
 
 .card-description {
   font-size: 13px;
-  color: #6b7280;
+  color: var(--text-secondary);
   margin-bottom: 12px;
   line-height: 1.5;
   /* Limit to 2 lines */
@@ -32,13 +32,13 @@
 
 .card-date {
   font-size: 12px;
-  color: #9ca3af;
+  color: var(--text-secondary);
   margin-bottom: 16px;
 }
 
 .card-btn {
-  background-color: #1a1a1a;
-  color: #ffffff;
+  background-color: var(--text-primary);
+  color: var(--bg-primary);
   border: none;
   padding: 8px 16px;
   border-radius: 8px;
@@ -48,5 +48,5 @@
 }
 
 .card-btn:hover {
-  background-color: #374151;
+  background-color: var(--hover-strong);
 }

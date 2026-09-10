@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { getProfile, getMyResources } from "../api";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
+import { useTheme } from "../context/ThemeContext";
 import ResourceCard from "./ResourceCard";
 import "./Profile.css";
 import ShimmerCard from "./ShimmerCard";
@@ -15,6 +16,7 @@ function Profile() {
   const [error, setError] = useState(null);
 
   const { isLoggedIn } = useAuth();
+  const { theme, setTheme } = useTheme();
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -105,6 +107,23 @@ function Profile() {
           <div className="profile-info-item">
             <span className="profile-info-label">Date Joined</span>
             <span className="profile-info-value">{joined}</span>
+          </div>
+        </div>
+
+        <div className="profile-divider" />
+
+        <div className="profile-info">
+          <div className="profile-info-item">
+            <span className="profile-info-label">Theme</span>
+            <select
+              className="profile-theme-select"
+              value={theme}
+              onChange={(e) => setTheme(e.target.value)}
+            >
+              <option value="light">Light</option>
+              <option value="dark">Dark</option>
+              <option value="system">System</option>
+            </select>
           </div>
         </div>
       </div>
