@@ -3,7 +3,6 @@ import { Routes, Route, BrowserRouter, Router } from "react-router-dom";
 import authHearders from "./api";
 
 import ResourceCard from "./components/ResourceCard";
-import ProfileCard from "./components/ProfileCard";
 import LoginForm from "./components/LoginForm";
 import LikeButton from "./components/LikeButton";
 import Navbar from "./components/Navbar";
