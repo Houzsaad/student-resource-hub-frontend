@@ -20,7 +20,6 @@ export function ThemeProvider({ children }) {
     applyTheme(theme);
     localStorage.setItem("theme", theme);
 
-    // Keep in sync if system preference changes while "system" is selected
     const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
     const listener = () => {
       if (theme === "system") applyTheme("system");
