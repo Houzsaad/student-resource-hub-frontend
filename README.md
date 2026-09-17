@@ -109,7 +109,7 @@ src/
 
 ## Pending Submissions (Moderator) Page
 <p align="center">
-    <img src="pending-submissions.png" width="250"/>
+    <img src="pending-submission.png" width="250"/>
 </p>
 
 ## Dark Mode
