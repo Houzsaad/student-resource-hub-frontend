@@ -1,7 +1,5 @@
 import { useState, useEffect } from "react";
 import { getProfile, getMyResources } from "../api";
-//import { useNavigate } from "react-router-dom";
-import { getProfile } from "../api";
 import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { useTheme } from "../context/ThemeContext";
