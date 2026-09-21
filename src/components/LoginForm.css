@@ -95,3 +95,10 @@
     color: #3b82f6;
     font-weight: 600;
 }
+
+
+.form-success {
+  font-size: 13px;
+  color: #16a34a;
+  margin-bottom: 16px;
+}

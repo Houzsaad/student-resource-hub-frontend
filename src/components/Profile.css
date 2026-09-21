@@ -71,3 +71,12 @@
   color: #1a1a1a;
   font-weight: 600;
 }
+
+
+
+.change-password-link {
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--accent);
+}

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { getProfile } from "../api";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import "./Profile.css";
 import ShimmerCard from "./ShimmerCard";
@@ -67,6 +67,12 @@ function Profile() {
             <span className="profile-info-value">{joined}</span>
           </div>
         </div>
+
+        <div className="profile-divider" />
+
+        <Link to="/change-password" className="change-password-link">
+          Change Password
+        </Link>
 
       </div>
     </div>
