@@ -1,11 +1,8 @@
 import { useState, useEffect } from "react";
-<<<<<<< HEAD
 import { getProfile, getMyResources } from "../api";
 import { useNavigate } from "react-router-dom";
-=======
 import { getProfile } from "../api";
 import { useNavigate, Link } from "react-router-dom";
->>>>>>> srh-frontend-upgrade
 import { useAuth } from "../context/AuthContext";
 import { useTheme } from "../context/ThemeContext";
 import ResourceCard from "./ResourceCard";
@@ -117,7 +114,6 @@ function Profile() {
 
         <div className="profile-divider" />
 
-<<<<<<< HEAD
         <div className="profile-info">
           <div className="profile-info-item">
             <span className="profile-info-label">Theme</span>
@@ -132,12 +128,11 @@ function Profile() {
             </select>
           </div>
         </div>
-=======
+
         <Link to="/change-password" className="change-password-link">
           Change Password
         </Link>
 
->>>>>>> srh-frontend-upgrade
       </div>
 
       <div className="my-resources">
