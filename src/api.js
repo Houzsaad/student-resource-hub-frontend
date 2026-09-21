@@ -417,4 +417,37 @@ export async function canApproveResources() {
   return data.can_approve_resource === true;
 }
 
+
+
+export async function changePassword(data) {
+  const res = await fetch(`${BASE}/accounts/change-password/`, {
+    method: "POST",
+    headers: {
+      ...authHearders(),
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  });
+  return res.json();
+}
+
+
+export async function requestPasswordReset(email) {
+  const res = await fetch(`${BASE}/accounts/password-reset/request/`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ email }),
+  });
+  return res.json();
+}
+
+export async function confirmPasswordReset(data) {
+  const res = await fetch(`${BASE}/accounts/password-reset/confirm/`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
+  });
+  return res.json();
+}
+
 export default authHearders;

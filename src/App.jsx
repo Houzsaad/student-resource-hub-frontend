@@ -23,6 +23,12 @@ import PendingSubmissions from "./components/PendingSubmissions";
 
 import { AuthProvider, PrivateRoute } from "./context/AuthContext";
 
+import ChangePassword from "./components/ChangePassword";
+import { changePassword, requestPasswordReset, confirmPasswordReset } from "./api";
+
+import ForgotPassword from "./components/ForgotPassword";
+import ResetPassword from "./components/ResetPassword";
+
 function App(){
 
     return(
@@ -51,6 +57,11 @@ function App(){
                     <Route path="/Theme" element={ <PrivateRoute><ThemeProvider /></PrivateRoute> } />
                     
                     {/* path("approval-permission/", ResourceApprovalPermissionView.as_view(), name="resource-approval-permission"), */}
+
+                    <Route path="/change-password" element={ <PrivateRoute><ChangePassword /></PrivateRoute> } />
+
+                    <Route path="/forgot-password" element={<ForgotPassword />} />
+                    <Route path="/reset-password/:uid/:token" element={<ResetPassword />} />
 
                 </Routes>
         </Layout>

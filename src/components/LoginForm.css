@@ -96,6 +96,7 @@
     font-weight: 600;
 }
 
+<<<<<<< HEAD
 .password-input-wrapper {
   position: relative;
 }
@@ -116,4 +117,11 @@
   color: #666;
   display: flex;
   align-items: center;
+=======
+
+.form-success {
+  font-size: 13px;
+  color: #16a34a;
+  margin-bottom: 16px;
+>>>>>>> srh-frontend-upgrade
 }

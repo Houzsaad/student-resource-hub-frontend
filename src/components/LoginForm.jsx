@@ -72,6 +72,12 @@ function LoginForm(){
             </div>
             </div>
 
+
+            <div className="login-footer" style={{ textAlign: "right", marginTop: "4px" }}>
+                <Link to="/forgot-password">Forgot password?</Link>
+            </div>
+
+
             <button 
                 type="submit" 
                 className="login-btn"
