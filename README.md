@@ -91,28 +91,28 @@ src/
 ## Screenshots
 
 ### Registration
-<p align="center"><img src="screenshots/registration.png" width="250"/></p>
+<p align="center"><img src="registration.png" width="250"/></p>
 
 ### Login
-<p align="center"><img src="screenshots/login.png" width="250"/></p>
+<p align="center"><img src="login.png" width="250"/></p>
 
 ### Resources List
-<p align="center"><img src="screenshots/resources.png" width="250"/></p>
+<p align="center"><img src="resources.png" width="250"/></p>
 
 ### Profile
-<p align="center"><img src="screenshots/profile.png" width="250"/></p>
+<p align="center"><img src="profile.png" width="250"/></p>
 
 ### Upload Resource
-<p align="center"><img src="screenshots/upload.png" width="250"/></p>
+<p align="center"><img src="upload.png" width="250"/></p>
 
 ### Resource Details
-<p align="center"><img src="screenshots/resource-detail.png" width="250"/></p>
+<p align="center"><img src="resource-detail.png" width="250"/></p>
 
 ### Pending Submissions (Moderator)
-<p align="center"><img src="screenshots/pending-submission.png" width="250"/></p>
+<p align="center"><img src="pending-submission.png" width="250"/></p>
 
 ### Dark Mode
-<p align="center"><img src="screenshots/dark-mode.png" width="250"/></p>
+<p align="center"><img src="dark-mode.png" width="250"/></p>
 
 ---
 
